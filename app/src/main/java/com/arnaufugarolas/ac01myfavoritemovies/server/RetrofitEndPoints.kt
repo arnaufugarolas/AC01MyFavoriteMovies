@@ -1,6 +1,6 @@
 package com.arnaufugarolas.ac01myfavoritemovies.server
 
-import com.arnaufugarolas.ac01myfavoritemovies.Movie
+import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
 import retrofit2.Response
 import retrofit2.http.*
 

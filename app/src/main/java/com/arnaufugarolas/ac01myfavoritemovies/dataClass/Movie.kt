@@ -1,14 +1,15 @@
-package com.arnaufugarolas.ac01myfavoritemovies
+package com.arnaufugarolas.ac01myfavoritemovies.dataClass
 
 import com.google.gson.annotations.SerializedName
 
 
 data class Movie(
+
     @SerializedName("id") var id: Int? = null,
     @SerializedName("adult") var adult: Boolean? = null,
     @SerializedName("backdrop_path") var backdropPath: String? = null,
     @SerializedName("favorite") var favorite: Boolean? = null,
-    @SerializedName("genre_ids") var genreIds: ArrayList<Int> = arrayListOf(),
+    @SerializedName("genre_ids") var genreIds: MutableList<Int> = mutableListOf(),
     @SerializedName("original_language") var originalLanguage: String? = null,
     @SerializedName("original_title") var originalTitle: String? = null,
     @SerializedName("overview") var overview: String? = null,

@@ -28,11 +28,9 @@
     <style name="MovieItemTitle" parent="MovieItemBasicText">
         <item name="android:textStyle">bold</item>
     </style>
-
     <style name="MovieItemRatingText" parent="MovieItemBasicText">
         <item name="android:gravity">center_vertical|center_horizontal</item>
     </style>
-
     <style name="MovieItemImage" parent="Layout00">
         <item name="android:scaleType">fitCenter</item>
         <item name="android:adjustViewBounds">true</item>
