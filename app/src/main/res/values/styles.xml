@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Layouts -->
+    <style name="Layout00">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+    <style name="LayoutMM">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="LayoutWW">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- Styles -->
+    <style name="Column" parent="LayoutWW">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Row" parent="LayoutWW">
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="MovieItemBasicText" parent="Layout00">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:gravity">center_vertical|start</item>
+    </style>
+    <style name="MovieItemTitle" parent="MovieItemBasicText">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MovieItemRatingText" parent="MovieItemBasicText">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+
+    <style name="MovieItemImage" parent="Layout00">
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+</resources>

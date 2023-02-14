@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AC01 My favorite movies</string>
+    <string name="favorite">Favorite</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="read_more">Read More</string>
+    <string name="edit_user_rating">Edit User Rating</string>
 </resources>

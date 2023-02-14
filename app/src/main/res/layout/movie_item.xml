@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="350dp">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GColumn01"
+            app:layout_constraintGuide_percent="0.05"
+            style="@style/Column" /> <!-- Column 05% -->
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GColumn02"
+            app:layout_constraintGuide_percent="0.80"
+            style="@style/Column" /> <!-- Column 80% -->
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GColumn03"
+            app:layout_constraintGuide_percent="0.95"
+            style="@style/Column" /> <!-- Column 95% -->
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GRow01"
+            app:layout_constraintGuide_percent="0.05"
+            style="@style/Row" />  <!-- Row 05% -->
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GRow02"
+            app:layout_constraintGuide_percent="0.20"
+            style="@style/Row" /> <!-- Row 20% -->
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GRow03"
+            app:layout_constraintGuide_percent="0.35"
+            style="@style/Row" />  <!-- Row 35% -->
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GRow04"
+            app:layout_constraintGuide_percent="0.50"
+            style="@style/Row" /> <!-- Row 50% -->
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GRow05"
+            app:layout_constraintGuide_percent="0.65"
+            style="@style/Row" /> <!-- Row 65% -->
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GRow06"
+            app:layout_constraintGuide_percent="0.80"
+            style="@style/Row" /> <!-- Row 80% -->
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GRow07"
+            app:layout_constraintGuide_percent="0.95"
+            style="@style/Row" /> <!-- Row 95% -->
+
+    <TextView
+            android:id="@+id/TVMovieTitle"
+            style="@style/MovieItemTitle"
+            app:layout_constraintStart_toStartOf="@+id/GColumn01"
+            app:layout_constraintTop_toTopOf="@+id/GRow01"
+            app:layout_constraintBottom_toTopOf="@+id/GRow02"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn02"
+            tools:text="Movie Title" /> <!-- Movie Title -->
+
+    <ImageView
+            android:id="@+id/IVFavorite"
+            style="@style/MovieItemImage"
+            android:src="@drawable/sharp_star_outline"
+            android:contentDescription="@string/favorite"
+            app:layout_constraintStart_toStartOf="@+id/GColumn02"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
+            app:layout_constraintBottom_toTopOf="@+id/GRow02"
+            app:layout_constraintTop_toTopOf="@+id/GRow01" />
+
+    <ImageView
+            android:id="@+id/IVMoviePoster"
+            style="@style/MovieItemImage"
+            android:contentDescription="@string/movie_poster"
+            app:layout_constraintBottom_toTopOf="@+id/GRow06"
+            app:layout_constraintStart_toStartOf="@+id/GColumn01"
+            app:layout_constraintTop_toTopOf="@+id/GRow02"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn02" />
+
+    <ImageView
+            android:id="@+id/IVReadMore"
+            style="@style/MovieItemImage"
+            android:src="@drawable/sharp_read_more"
+            android:contentDescription="@string/read_more"
+            app:layout_constraintStart_toStartOf="@+id/GColumn02"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
+            app:layout_constraintBottom_toTopOf="@+id/GRow04"
+            app:layout_constraintTop_toTopOf="@+id/GRow03" />
+
+    <ImageView
+            android:id="@+id/IVEditRating"
+            style="@style/MovieItemImage"
+            android:src="@drawable/sharp_edit_note"
+            android:contentDescription="@string/edit_user_rating"
+            app:layout_constraintStart_toStartOf="@+id/GColumn02"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
+            app:layout_constraintBottom_toTopOf="@+id/GRow05"
+            app:layout_constraintTop_toTopOf="@+id/GRow04" /> <!-- Edit User Rating -->
+
+    <TextView
+            android:id="@+id/TVMovieReleaseDate"
+            style="@style/MovieItemBasicText"
+            app:layout_constraintStart_toStartOf="@+id/GColumn01"
+            app:layout_constraintTop_toTopOf="@+id/GRow06"
+            app:layout_constraintBottom_toTopOf="@+id/GRow07"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn02"
+            tools:text="10 July 2003" /> <!-- Movie Release Date -->
+
+    <TextView
+            android:id="@+id/TVMovieRating"
+            style="@style/MovieItemRatingText"
+            app:layout_constraintStart_toStartOf="@+id/GColumn02"
+            app:layout_constraintTop_toTopOf="@+id/GRow06"
+            app:layout_constraintBottom_toTopOf="@+id/GRow07"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
+            tools:text="99" /> <!-- Movie Rating -->
+</androidx.constraintlayout.widget.ConstraintLayout>
