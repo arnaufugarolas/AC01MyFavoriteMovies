@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/LinearLayoutMWV">
+
+    <TextView
+            style="@style/TextViewTitleDialog"
+            android:text="Edit your personal rating of the movie"
+            android:id="@+id/TVTitleDialog" />
+
+    <EditText
+            style="@style/EditTextDialog"
+            android:id="@+id/ETDataDialog"
+            android:inputType="text"
+            android:hint="" />
+
+
+    <LinearLayout style="@style/LinearLayoutMMH">
+
+        <Button
+                style="@style/ButtonCancelDialog"
+                android:text="Cancel"
+                android:id="@+id/ButtonCancelDialog" />
+
+        <Button
+                style="@style/ButtonSubmitDialog"
+                android:text="Submit"
+                android:id="@+id/ButtonSubmitDialog" />
+        
+    </LinearLayout>
+</LinearLayout>

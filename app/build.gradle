@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -13,7 +14,6 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,14 +38,22 @@ android {
 }
 
 dependencies {
+    // Kotlin
     implementation 'androidx.core:core-ktx:1.9.0'
+    // AndroidX
     implementation 'androidx.appcompat:appcompat:1.6.1'
+    // Material
     implementation 'com.google.android.material:material:1.8.0'
+    // ConstraintLayout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // Lifecycle
     implementation 'androidx.lifecycle:lifecycle-process:2.5.1'
-    implementation 'androidx.databinding:databinding-common:7.4.1'
+    // Activity
     implementation "androidx.activity:activity-ktx:1.6.1"
+    // Fragment
     implementation "androidx.fragment:fragment-ktx:1.5.5"
+    // Binding
+    kapt 'androidx.databinding:databinding-common:7.4.2'
     // GSON
     implementation 'com.google.code.gson:gson:2.10.1'
     // Retrofit

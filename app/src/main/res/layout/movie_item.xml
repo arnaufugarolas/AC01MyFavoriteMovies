@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="350dp">
+        style="@style/MovieItemMain"
+        tools:context=".MovieAdapter">
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GColumn01"
@@ -55,35 +55,42 @@
             tools:text="Movie Title" /> <!-- Movie Title -->
     <ImageView
             android:id="@+id/IVFavorite"
-            style="@style/MovieItemImage"
-            android:src="@drawable/sharp_star_outline"
-            android:contentDescription="@string/favorite"
+            style="@style/MovieItemFavorite"
             app:layout_constraintStart_toStartOf="@+id/GColumn02"
             app:layout_constraintEnd_toStartOf="@+id/GColumn03"
             app:layout_constraintBottom_toTopOf="@+id/GRow02"
             app:layout_constraintTop_toTopOf="@+id/GRow01" /> <!-- Favorite -->
     <ImageView
-            android:id="@+id/IVMoviePoster"
-            style="@style/MovieItemImage"
-            android:contentDescription="@string/movie_poster"
+            android:id="@+id/IVErrorImage"
+            style="@style/MovieItemError"
             app:layout_constraintBottom_toTopOf="@+id/GRow06"
             app:layout_constraintStart_toStartOf="@+id/GColumn01"
             app:layout_constraintTop_toTopOf="@+id/GRow02"
             app:layout_constraintEnd_toStartOf="@+id/GColumn02" /> <!-- Movie Poster -->
     <ImageView
+            android:id="@+id/IVMoviePoster"
+            style="@style/MovieItemPoster"
+            app:layout_constraintBottom_toTopOf="@+id/GRow06"
+            app:layout_constraintStart_toStartOf="@+id/GColumn01"
+            app:layout_constraintTop_toTopOf="@+id/GRow02"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn02" /> <!-- Movie Poster -->
+    <ProgressBar
+            android:id="@+id/PBMoviePoster"
+            style="@style/Loading"
+            app:layout_constraintBottom_toTopOf="@+id/GRow06"
+            app:layout_constraintStart_toStartOf="@+id/GColumn01"
+            app:layout_constraintTop_toTopOf="@+id/GRow02"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn02" /> <!-- Progress Bar -->
+    <ImageView
             android:id="@+id/IVReadMore"
-            style="@style/MovieItemImage"
-            android:src="@drawable/sharp_read_more"
-            android:contentDescription="@string/read_more"
+            style="@style/MovieItemReadMore"
             app:layout_constraintStart_toStartOf="@+id/GColumn02"
             app:layout_constraintEnd_toStartOf="@+id/GColumn03"
             app:layout_constraintBottom_toTopOf="@+id/GRow04"
             app:layout_constraintTop_toTopOf="@+id/GRow03" /> <!-- Read More -->
     <ImageView
             android:id="@+id/IVEditRating"
-            style="@style/MovieItemImage"
-            android:src="@drawable/sharp_edit_note"
-            android:contentDescription="@string/edit_user_rating"
+            style="@style/MovieItemEditRating"
             app:layout_constraintStart_toStartOf="@+id/GColumn02"
             app:layout_constraintEnd_toStartOf="@+id/GColumn03"
             app:layout_constraintBottom_toTopOf="@+id/GRow05"
@@ -103,5 +110,5 @@
             app:layout_constraintTop_toTopOf="@+id/GRow06"
             app:layout_constraintBottom_toTopOf="@+id/GRow07"
             app:layout_constraintEnd_toStartOf="@+id/GColumn03"
-            tools:text="99" /> <!-- Movie Rating -->
+            tools:text="10" /> <!-- Movie Rating -->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,16 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFEFCFB</color>
     <color name="selective_yellow">#FFFFB30F</color>
+    <color name="oxford_blue">#FF0A1128</color>
+    <color name="penn_blue">#FF001F54</color>
+    <color name="indigo_dye">#FF034078</color>
+    <color name="cerulean">#FF1282A2</color>
+    <color name="tea_green" hex="FFBDD9BF">#FFBDD9BF</color>
+    <color name="charcoal" hex="FF2E4052">#FF2E4052</color>
+    <color name="sunglow" hex="FFFFC857">#FFFFC857</color>
+    <color name="dark_purple" hex="FF412234">#FF412234</color>
+    <color name="cornell_red" hex="FFBD1E1E">#FFBD1E1E</color>
+    <color name="Mantis" hex="FF7AC74F">#FF7AC74F</color>
 </resources>

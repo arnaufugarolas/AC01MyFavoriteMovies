@@ -1,58 +1,43 @@
 package com.arnaufugarolas.ac01myfavoritemovies
 
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
 import com.arnaufugarolas.ac01myfavoritemovies.databinding.ActivityMainBinding
-import com.google.gson.Gson
+import com.arnaufugarolas.ac01myfavoritemovies.ui.MainViewModel
+import com.arnaufugarolas.ac01myfavoritemovies.ui.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val json = """
-        {
-          "adult": false,
-          "backdrop_path": "https://image.tmdb.org/t/p/original/faXT8V80JRhnArTAeYXz0Eutpv9.jpg",
-          "favorite": true,
-          "genre_ids": [
-            16,
-            28,
-            12,
-            35,
-            10751,
-            14
-          ],
-          "id": 315162,
-          "original_language": "en",
-          "original_title": "Puss in Boots: The Last Wish",
-          "overview": "Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.",
-          "popularity": 6660.227,
-          "poster_path": "https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg",
-          "release_date": "2022-12-07",
-          "title": "Puss in Boots: The Last Wish",
-          "video": false,
-          "vote_average": 8.6,
-          "vote_count": 2814,
-          "my_score": 9
-        }
-    """
-    private lateinit var gson: Gson
+    private val viewModel: MainViewModel by viewModels { MainViewModelFactory() }
+    private var movies: MutableList<Movie> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel.movies.observe(this) {
+            binding.RVMainMovies.adapter = MovieAdapter(it, supportFragmentManager)
+            binding.RVMainMovies.adapter?.notifyDataSetChanged()
+        }
+
+        viewModel.loading.observe(this) {
+            binding.PBMainLoading.visibility = if (it) View.VISIBLE else View.GONE
+        }
+
         init()
     }
 
     private fun init() {
-        setupVariables()
+        setupRecyclerView()
     }
 
-    private fun setupVariables() {
-        gson = Gson()
-        val jsonMovie = gson.fromJson(json, Movie::class.java)
-        Log.d("Buenas", "Buenas")
+    private fun setupRecyclerView() {
+        binding.RVMainMovies.adapter = MovieAdapter(movies, supportFragmentManager)
+        binding.RVMainMovies.layoutManager = LinearLayoutManager(applicationContext)
     }
 }

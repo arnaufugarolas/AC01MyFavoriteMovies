@@ -32,16 +32,21 @@ class MainViewModel : ViewModel() {
             _loading.value = true
             _errorApiRest.value = null
 
-            val response = RetrofitConnection.service.listMovies()
+            try {
+                val response = RetrofitConnection.service.listMovies()
 
-            if (response.isSuccessful) {
-                _movies.value = response.body()?.toMutableList()
-                _moviesCount.value = _movies.value!!.size
-            } else {
-                _errorApiRest.value = response.errorBody().toString()
+                if (response.isSuccessful) {
+                    _movies.value = response.body()?.toMutableList()
+                    _moviesCount.value = _movies.value!!.size
+                } else {
+                    _errorApiRest.value = response.errorBody().toString()
+                }
+
+                _loading.value = false
+            } catch (e: Exception) {
+                _errorApiRest.value = e.message
+                _loading.value = false
             }
-
-            _loading.value = false
         }
     }
 
@@ -49,14 +54,14 @@ class MainViewModel : ViewModel() {
         movie.favorite = movie.favorite != true
 
         viewModelScope.launch {
-            RetrofitConnection.service.updateMovie(movie.id, movie)
+            RetrofitConnection.service.updateMovie(movie.id!!, movie)
             loadMovies()
         }
     }
 
     fun onMovieDelete(movie: Movie) {
         viewModelScope.launch {
-            RetrofitConnection.service.deleteMovie(movie.id)
+            RetrofitConnection.service.deleteMovie(movie.id!!)
             loadMovies()
         }
     }

@@ -8,6 +8,9 @@ interface RetrofitEndPoints {
     @GET("movies")
     suspend fun listMovies(): Response<List<Movie>>
 
+    @GET("movies/{id}")
+    suspend fun getMovie(@Path("id") id: Int): Response<Movie>
+
     @POST("movies")
     suspend fun newMovie(@Body movie: Movie?)
 

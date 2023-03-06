@@ -5,10 +5,12 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
     </style>
+
     <style name="LayoutMM">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+
     <style name="LayoutWW">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -17,22 +19,114 @@
     <style name="Column" parent="LayoutWW">
         <item name="android:orientation">vertical</item>
     </style>
+
     <style name="Row" parent="LayoutWW">
         <item name="android:orientation">horizontal</item>
     </style>
+
     <style name="MovieItemBasicText" parent="Layout00">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/tea_green</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:gravity">center_vertical|start</item>
     </style>
+
     <style name="MovieItemTitle" parent="MovieItemBasicText">
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="MovieItemRatingText" parent="MovieItemBasicText">
         <item name="android:gravity">center_vertical|center_horizontal</item>
     </style>
+
     <style name="MovieItemImage" parent="Layout00">
         <item name="android:scaleType">fitCenter</item>
         <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="MovieItemError" parent="MovieItemImage">
+        <item name="android:src">@drawable/baseline_clear_24</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:contentDescription">@string/error</item>
+    </style>
+
+    <style name="Loading" parent="Layout00">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="MovieItemReadMore" parent="MovieItemImage">
+        <item name="android:contentDescription">@string/read_more</item>
+        <item name="android:src">@drawable/sharp_read_more</item>
+    </style>
+
+    <style name="MovieItemEditRating" parent="MovieItemImage">
+        <item name="android:contentDescription">@string/edit_user_rating</item>
+        <item name="android:src">@drawable/sharp_edit_note</item>
+    </style>
+
+    <style name="MovieItemFavorite" parent="MovieItemImage">
+        <item name="android:contentDescription">@string/favorite</item>
+        <item name="android:src">@drawable/sharp_star_outline</item>
+    </style>
+
+    <style name="MovieItemPoster" parent="MovieItemImage">
+        <item name="android:contentDescription">@string/movie_poster</item>
+    </style>
+
+    <style name="MovieItemMain">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/oxford_blue</item>
+        <item name="android:layout_height">350dp</item>
+    </style>
+
+    <style name="LinearLayoutMWV">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TextViewTitleDialog" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:autoSizeTextType">uniform</item>
+    </style>
+
+    <style name="EditTextDialog" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:importantForAutofill">no</item>
+        <item name="android:minHeight">50dp</item>
+    </style>
+
+    <style name="Button" parent="TextAppearance.AppCompat.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:minLines">1</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+
+    <style name="ButtonCancelDialog" parent="Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="ButtonSubmitDialog" parent="Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="LinearLayoutMMH">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">horizontal</item>
     </style>
 </resources>
