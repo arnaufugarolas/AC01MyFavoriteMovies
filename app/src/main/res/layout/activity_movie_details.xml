@@ -5,32 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MovieDetails">
-    <!--    @SerializedName("id") var id: Int? = null,-->
-    <!--    @SerializedName("title") var title: String? = null,-->
-    <!--    @SerializedName("release_date") var releaseDate: String? = null,-->
-    <!--    @SerializedName("overview") var overview: String? = null,-->
-    <!--    @SerializedName("original_language") var originalLanguage: String? = null,-->
-    <!--    @SerializedName("original_title") var originalTitle: String? = null,-->
-    <!--    @SerializedName("adult") var adult: Boolean? = null,-->
-    <!--    @SerializedName("favorite") var favorite: Boolean? = null,-->
-    <!--    @SerializedName("backdrop_path") var backdropPath: String? = null,-->
-    <!--    @SerializedName("poster_path") var posterPath: String? = null,-->
-    <!--    @SerializedName("genre_ids") var genreIds: MutableList<Int> = mutableListOf(),-->
-    <!--    @SerializedName("popularity") var popularity: Double? = null,-->
-    <!--    @SerializedName("video") var video: Boolean? = null,-->
-    <!--    @SerializedName("vote_average") var voteAverage: Double? = null,-->
-    <!--    @SerializedName("vote_count") var voteCount: Int? = null,-->
-    <!--    @SerializedName("my_score") var myScore: Int? = null-->
-
-    <!--    <TextView-->
-    <!--            android:id="@+id/textView"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="Title"-->
-    <!--            android:textSize="24sp"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -51,21 +25,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/GDetailsRow01"
-            app:layout_constraintGuide_percent="0.15"
+            app:layout_constraintGuide_percent="0.05"
             android:orientation="horizontal" />
 
     <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/GDetailsRow02"
+            app:layout_constraintGuide_percent="0.15"
+            android:orientation="horizontal" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/GDetailsRow03"
             app:layout_constraintGuide_percent="0.95"
             android:orientation="horizontal" />
 
     <ScrollView
             android:id="@+id/SVArticleForm"
             style="@style/Layout00"
-            app:layout_constraintTop_toBottomOf="@id/GDetailsRow01"
-            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow02"
+            app:layout_constraintTop_toBottomOf="@id/GDetailsRow02"
+            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow03"
             app:layout_constraintStart_toEndOf="@id/GDetailsColumn01"
             app:layout_constraintEnd_toStartOf="@id/GDetailsColumn02">
 
@@ -82,107 +63,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                    android:id="@+id/TVReleaseDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Release Date"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVTitle" />
-
-            <TextView
-                    android:id="@+id/TVOverview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Overview"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVReleaseDate" />
-
-            <TextView
-                    android:id="@+id/TVOriginalLanguage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Original Language"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVOverview" />
-
-            <TextView
-                    android:id="@+id/TVOriginalTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Original Title"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVOriginalLanguage" />
-
-            <TextView
-                    android:id="@+id/TVAdult"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Adult"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVOriginalTitle" />
-
-            <TextView
-                    android:id="@+id/TVFavorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Favorite"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVAdult" />
-
-            <TextView
-                    android:id="@+id/TVVoteAverage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Vote Average"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVFavorite" />
-
-            <TextView
-                    android:id="@+id/TVVoteCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Vote Count"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVVoteAverage" />
-
-            <TextView
-                    android:id="@+id/TVPopularity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Popularity"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVVoteCount" />
-
-            <TextView
-                    android:id="@+id/TVVideo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Video"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/TVPopularity" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

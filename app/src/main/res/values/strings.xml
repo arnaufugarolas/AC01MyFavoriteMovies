@@ -5,4 +5,5 @@
     <string name="read_more">Read More</string>
     <string name="edit_user_rating">Edit User Rating</string>
     <string name="error">Error</string>
+    <string name="delete_movie">Delete Movie</string>
 </resources>

@@ -6,10 +6,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
+import com.arnaufugarolas.ac01myfavoritemovies.databinding.EditRatingBinding
 
 class EditRatingDialog(private val movie: Movie) :
     DialogFragment() {
@@ -20,23 +19,21 @@ class EditRatingDialog(private val movie: Movie) :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view: View = inflater.inflate(R.layout.edit_rating, container, false)
-        val btnOk: Button = view.findViewById(R.id.ButtonSubmitDialog)
-        val btnCancel: Button = view.findViewById(R.id.ButtonCancelDialog)
-        val editTextData: EditText = view.findViewById(R.id.ETDataDialog)
+        val binding = EditRatingBinding.inflate(inflater, container, false)
 
-        editTextData.setText(movie.myScore.toString())
+        binding.ETDataDialog.setText(movie.myScore.toString())
 
-        btnOk.setOnClickListener {
-            mCallback?.onEditRating(movie, editTextData.text.toString().toInt())
+        binding.ButtonSubmitDialog.setOnClickListener {
+            val rating = binding.ETDataDialog.text.toString().toInt()
+            (activity as EditRatingListener).onEditRating(movie, rating)
             this.dismiss()
         }
 
-        btnCancel.setOnClickListener {
+        binding.ButtonCancelDialog.setOnClickListener {
             this.dismiss()
         }
 
-        return view
+        return binding.root.rootView
     }
 
     override fun onStart() {
@@ -54,5 +51,4 @@ class EditRatingDialog(private val movie: Movie) :
             Log.e("Dialog", "onAttach: ClassCastException: " + e.message)
         }
     }
-
 }

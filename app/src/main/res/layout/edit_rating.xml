@@ -10,7 +10,7 @@
     <EditText
             style="@style/EditTextDialog"
             android:id="@+id/ETDataDialog"
-            android:inputType="text"
+            android:inputType="number"
             android:hint="" />
 
 
@@ -25,6 +25,6 @@
                 style="@style/ButtonSubmitDialog"
                 android:text="Submit"
                 android:id="@+id/ButtonSubmitDialog" />
-        
+
     </LinearLayout>
 </LinearLayout>

@@ -62,7 +62,6 @@ class MainViewModel : ViewModel() {
     fun onMovieDelete(movie: Movie) {
         viewModelScope.launch {
             RetrofitConnection.service.deleteMovie(movie.id!!)
-            loadMovies()
         }
     }
 
