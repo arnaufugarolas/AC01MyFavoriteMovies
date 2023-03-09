@@ -8,22 +8,22 @@
     <androidx.constraintlayout.widget.Guideline
             style="@style/Column"
             android:id="@+id/GMainColumn01"
-            app:layout_constraintGuide_percent="0.15" />
+            app:layout_constraintGuide_percent="0.15" /> <!-- Column 15% -->
 
     <androidx.constraintlayout.widget.Guideline
             style="@style/Column"
             android:id="@+id/GMainColumn02"
-            app:layout_constraintGuide_percent="0.85" />
+            app:layout_constraintGuide_percent="0.85" /> <!-- Column 85% -->
 
     <androidx.constraintlayout.widget.Guideline
             style="@style/Row"
             android:id="@+id/GMainRow01"
-            app:layout_constraintGuide_percent="0.25" />
+            app:layout_constraintGuide_percent="0.25" /> <!-- Row 25% -->
 
     <androidx.constraintlayout.widget.Guideline
             style="@style/Row"
             android:id="@+id/GMainRow02"
-            app:layout_constraintGuide_percent="0.75" />
+            app:layout_constraintGuide_percent="0.75" /> <!-- Row 75% -->
 
     <androidx.recyclerview.widget.RecyclerView
             style="@style/LayoutMM"
@@ -32,7 +32,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:listitem="@layout/movie_item" />
+            tools:listitem="@layout/movie_item" /> <!-- RecyclerView -->
 
     <ProgressBar
             style="@style/Loading"
@@ -40,5 +40,13 @@
             app:layout_constraintEnd_toStartOf="@+id/GMainColumn02"
             app:layout_constraintStart_toStartOf="@+id/GMainColumn01"
             app:layout_constraintBottom_toTopOf="@+id/GMainRow02"
-            app:layout_constraintTop_toTopOf="@+id/GMainRow01" />
+            app:layout_constraintTop_toTopOf="@+id/GMainRow01" /> <!-- Loading -->
+
+    <ImageView
+            style="@style/ImageViewRetry"
+            android:id="@+id/IVMainError"
+            app:layout_constraintEnd_toStartOf="@+id/GMainColumn02"
+            app:layout_constraintStart_toStartOf="@+id/GMainColumn01"
+            app:layout_constraintBottom_toTopOf="@+id/GMainRow02"
+            app:layout_constraintTop_toTopOf="@+id/GMainRow01" /> <!-- Loading -->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,9 +11,28 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+    <style name="MovieDetailsMain" parent="LayoutMM">
+        <item name="android:background">@color/oxford_blue</item>
+    </style>
+
+    <style name="LinearLayoutMMH">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
     <style name="LayoutWW">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="LayoutMW">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="LinearLayoutMWV" parent="LayoutMW">
+        <item name="android:orientation">vertical</item>
     </style>
     <!-- Styles -->
     <style name="Column" parent="LayoutWW">
@@ -24,26 +43,27 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <style name="MovieItemBasicText" parent="Layout00">
+    <style name="MovieBasicText" parent="Layout00">
         <item name="android:textColor">@color/tea_green</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:gravity">center_vertical|start</item>
+        <item name="android:lines">1</item>
     </style>
 
-    <style name="MovieItemTitle" parent="MovieItemBasicText">
+    <style name="MovieTitle" parent="MovieBasicText">
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="MovieItemRatingText" parent="MovieItemBasicText">
+    <style name="MovieItemRatingText" parent="MovieBasicText">
         <item name="android:gravity">center_vertical|center_horizontal</item>
     </style>
 
-    <style name="MovieItemImage" parent="Layout00">
+    <style name="MovieBasicImage" parent="Layout00">
         <item name="android:scaleType">fitCenter</item>
         <item name="android:adjustViewBounds">true</item>
     </style>
 
-    <style name="MovieItemError" parent="MovieItemImage">
+    <style name="MovieItemError" parent="MovieBasicImage">
         <item name="android:src">@drawable/baseline_clear_24</item>
         <item name="android:visibility">gone</item>
         <item name="android:contentDescription">@string/error</item>
@@ -53,27 +73,27 @@
         <item name="android:visibility">gone</item>
     </style>
 
-    <style name="MovieItemReadMore" parent="MovieItemImage">
+    <style name="MovieReadMore" parent="MovieBasicImage">
         <item name="android:contentDescription">@string/read_more</item>
         <item name="android:src">@drawable/sharp_read_more</item>
     </style>
 
-    <style name="MovieItemEditRating" parent="MovieItemImage">
+    <style name="MovieEditRating" parent="MovieBasicImage">
         <item name="android:contentDescription">@string/edit_user_rating</item>
         <item name="android:src">@drawable/sharp_edit_note</item>
     </style>
 
-    <style name="MovieItemFavorite" parent="MovieItemImage">
+    <style name="MovieFavorite" parent="MovieBasicImage">
         <item name="android:contentDescription">@string/favorite</item>
         <item name="android:src">@drawable/sharp_star_outline</item>
     </style>
 
-    <style name="MovieItemDeleteMovie" parent="MovieItemImage">
+    <style name="MovieDelete" parent="MovieBasicImage">
         <item name="android:contentDescription">@string/delete_movie</item>
         <item name="android:src">@drawable/outline_delete_24</item>
     </style>
 
-    <style name="MovieItemPoster" parent="MovieItemImage">
+    <style name="MoviePoster" parent="MovieBasicImage">
         <item name="android:contentDescription">@string/movie_poster</item>
     </style>
 
@@ -81,12 +101,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@color/oxford_blue</item>
         <item name="android:layout_height">350dp</item>
-    </style>
-
-    <style name="LinearLayoutMWV">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">vertical</item>
     </style>
 
     <style name="TextViewTitleDialog" parent="Widget.AppCompat.TextView">
@@ -129,11 +143,11 @@
         <item name="android:layout_margin">10dp</item>
     </style>
 
-    <style name="LinearLayoutMMH">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:orientation">horizontal</item>
+    <style name="ImageViewRetry">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:contentDescription">@string/error</item>
+        <item name="android:src">@drawable/baseline_sync_problem_24</item>
+        <item name="android:visibility">gone</item>
     </style>
-
-
 </resources>

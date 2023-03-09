@@ -14,7 +14,7 @@ object RetrofitConnection {
     }
 
     private val builder = Retrofit.Builder()
-        .baseUrl("https://my-json-server.typicode.com/arnaufugarolas/ACT3DB/")
+        .baseUrl("http://192.168.1.10:3000")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

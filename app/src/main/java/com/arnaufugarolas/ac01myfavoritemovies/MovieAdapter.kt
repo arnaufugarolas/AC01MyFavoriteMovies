@@ -3,7 +3,6 @@ package com.arnaufugarolas.ac01myfavoritemovies
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,24 +20,14 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.snackbar.Snackbar
 
-interface EditRatingListener {
-    fun onEditRating(movie: Movie, rating: Int)
-}
 
 class MovieAdapter(
     var movies: MutableList<Movie>,
     private val fragmentManager: FragmentManager,
     private val onMovieDelete: (Movie) -> Unit,
+    private val onMovieUpdate: (Movie) -> Unit
 ) :
-    RecyclerView.Adapter<MovieAdapter.ViewHolder>(),
-    EditRatingListener {
-
-    override fun onEditRating(movie: Movie, rating: Int) {
-        movies[movies.indexOf(movie)].myScore = rating
-        Log.d("MovieAdapter", "onEditRating: ${movies[movies.indexOf(movie)].myScore}")
-        notifyItemChanged(movies.indexOf(movie))
-    }
-
+    RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
         return ViewHolder(view)
@@ -76,7 +65,11 @@ class MovieAdapter(
             true
         }
         holder.binding.IVEditRating.setOnLongClickListener {
-            Snackbar.make(holder.binding.IVEditRating, "Edit rating", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(
+                holder.binding.IVEditRating,
+                "Edit personal rating",
+                Snackbar.LENGTH_SHORT
+            ).show()
             true
         }
         holder.binding.IVReadMore.setOnLongClickListener {
@@ -84,12 +77,12 @@ class MovieAdapter(
             true
         }
         holder.binding.IVMoviePoster.setOnLongClickListener {
-            Snackbar.make(holder.binding.IVMoviePoster, "Movie Poster", Snackbar.LENGTH_SHORT)
+            Snackbar.make(holder.binding.IVMoviePoster, "Movie poster", Snackbar.LENGTH_SHORT)
                 .show()
             true
         }
-        holder.binding.IVMoviePoster.setOnLongClickListener {
-            Snackbar.make(holder.binding.IVDeleteMovie, "Delete Movie", Snackbar.LENGTH_SHORT)
+        holder.binding.IVDeleteMovie.setOnLongClickListener {
+            Snackbar.make(holder.binding.IVDeleteMovie, "Delete movie", Snackbar.LENGTH_SHORT)
                 .show()
             true
         }
@@ -143,8 +136,9 @@ class MovieAdapter(
         setLongClickListeners(holder) // Set the long click listeners
 
         holder.binding.IVFavorite.setOnClickListener {
-            movie.favorite = !movie.favorite!!
-            notifyItemChanged(movies.indexOf(movie))
+            val newMovie = movie.copy()
+            newMovie.favorite = !movie.favorite!!
+            onMovieUpdate(newMovie)
         }
 
         holder.binding.IVEditRating.setOnClickListener {
@@ -162,8 +156,6 @@ class MovieAdapter(
             AlertDialog.Builder(it.context)
                 .setMessage("Are you sure you want to delete this movie?")
                 .setPositiveButton("Delete") { _, _ ->
-                    notifyItemRemoved(movies.indexOf(movie))
-                    movies.remove(movie)
                     onMovieDelete(movie)
                 }
                 .setNegativeButton("Cancel") { _, _ -> }

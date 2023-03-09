@@ -10,6 +10,7 @@ import androidx.fragment.app.DialogFragment
 import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
 import com.arnaufugarolas.ac01myfavoritemovies.databinding.EditRatingBinding
 
+
 class EditRatingDialog(private val movie: Movie) :
     DialogFragment() {
     private var mCallback: EditRatingListener? = null
@@ -25,7 +26,11 @@ class EditRatingDialog(private val movie: Movie) :
 
         binding.ButtonSubmitDialog.setOnClickListener {
             val rating = binding.ETDataDialog.text.toString().toInt()
-            (activity as EditRatingListener).onEditRating(movie, rating)
+            if (rating < 0 || rating > 10) {
+                binding.ETDataDialog.error = "The rating must be between 0 and 10"
+                return@setOnClickListener
+            }
+            mCallback?.onEditRating(movie, rating)
             this.dismiss()
         }
 
@@ -33,7 +38,7 @@ class EditRatingDialog(private val movie: Movie) :
             this.dismiss()
         }
 
-        return binding.root.rootView
+        return binding.root
     }
 
     override fun onStart() {

@@ -2,70 +2,74 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/MovieDetailsMain"
         tools:context=".MovieDetails">
 
-
     <androidx.constraintlayout.widget.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/GDetailsColumn01"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.05" />
-
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.05" /> <!-- Column 05% -->
     <androidx.constraintlayout.widget.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/GDetailsColumn02"
-            app:layout_constraintGuide_percent="0.95"
-            android:orientation="vertical" />
-
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.20" /> <!-- Column 20% -->
     <androidx.constraintlayout.widget.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/GDetailsColumn03"
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.80" /> <!-- Column 80% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GDetailsColumn05"
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.95" /> <!-- Column 95% -->
+    <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GDetailsRow01"
-            app:layout_constraintGuide_percent="0.05"
-            android:orientation="horizontal" />
-
+            style="@style/Row"
+            app:layout_constraintGuide_percent="0.05" /> <!-- Row 05% -->
     <androidx.constraintlayout.widget.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/GDetailsRow02"
-            app:layout_constraintGuide_percent="0.15"
-            android:orientation="horizontal" />
-
+            style="@style/Row"
+            app:layout_constraintGuide_percent="0.15" /> <!-- Row 15% -->
     <androidx.constraintlayout.widget.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/GDetailsRow03"
-            app:layout_constraintGuide_percent="0.95"
-            android:orientation="horizontal" />
+            style="@style/Row"
+            app:layout_constraintGuide_percent="0.95" /> <!-- Row 95% -->
+
+    <ImageView
+            android:id="@+id/IVDetailsFavorite"
+            style="@style/MovieFavorite"
+            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow02"
+            app:layout_constraintTop_toBottomOf="@+id/GDetailsRow01"
+            app:layout_constraintStart_toStartOf="@+id/GDetailsColumn01"
+            app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn02" /> <!-- Favorite -->
+    <TextView
+            android:id="@+id/TVDetailsMovieTitle"
+            style="@style/MovieTitle"
+            app:layout_constraintStart_toStartOf="@+id/GDetailsColumn02"
+            app:layout_constraintTop_toTopOf="@+id/GDetailsRow01"
+            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow02"
+            app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03"
+            tools:text="Puss in Boots: The Last Wish" /> <!-- Movie Title -->
+    <ImageView
+            android:id="@+id/IVDetailsDelete"
+            style="@style/MovieDelete"
+            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow02"
+            app:layout_constraintTop_toBottomOf="@+id/GDetailsRow01"
+            app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
+            app:layout_constraintEnd_toEndOf="@+id/GDetailsColumn05" /> <!-- Delete Movie -->
 
     <ScrollView
-            android:id="@+id/SVArticleForm"
+            android:id="@+id/SVDetails"
             style="@style/Layout00"
             app:layout_constraintTop_toBottomOf="@id/GDetailsRow02"
             app:layout_constraintBottom_toTopOf="@+id/GDetailsRow03"
             app:layout_constraintStart_toEndOf="@id/GDetailsColumn01"
-            app:layout_constraintEnd_toStartOf="@id/GDetailsColumn02">
+            app:layout_constraintEnd_toStartOf="@id/GDetailsColumn05">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout style="@style/LayoutMW">
 
-            <TextView
-                    android:id="@+id/TVTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Title"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </ScrollView> <!-- Scroll View -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

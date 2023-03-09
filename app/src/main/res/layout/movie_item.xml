@@ -37,14 +37,14 @@
             android:id="@+id/GRow05"
             app:layout_constraintGuide_percent="0.75"
             style="@style/Row" /> <!-- Row 75% -->
-
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GRow07"
             app:layout_constraintGuide_percent="0.95"
             style="@style/Row" /> <!-- Row 95% -->
+
     <TextView
             android:id="@+id/TVMovieTitle"
-            style="@style/MovieItemTitle"
+            style="@style/MovieTitle"
             app:layout_constraintStart_toStartOf="@+id/GColumn01"
             app:layout_constraintTop_toTopOf="@+id/GRow01"
             app:layout_constraintBottom_toTopOf="@+id/GRow02"
@@ -52,7 +52,7 @@
             tools:text="Movie Title" /> <!-- Movie Title -->
     <ImageView
             android:id="@+id/IVFavorite"
-            style="@style/MovieItemFavorite"
+            style="@style/MovieFavorite"
             app:layout_constraintStart_toStartOf="@+id/GColumn02"
             app:layout_constraintEnd_toStartOf="@+id/GColumn03"
             app:layout_constraintBottom_toTopOf="@+id/GRow02"
@@ -66,7 +66,7 @@
             app:layout_constraintEnd_toStartOf="@+id/GColumn02" /> <!-- Movie Poster -->
     <ImageView
             android:id="@+id/IVMoviePoster"
-            style="@style/MovieItemPoster"
+            style="@style/MoviePoster"
             app:layout_constraintBottom_toTopOf="@+id/GRow05"
             app:layout_constraintStart_toStartOf="@+id/GColumn01"
             app:layout_constraintTop_toTopOf="@+id/GRow02"
@@ -80,28 +80,28 @@
             app:layout_constraintEnd_toStartOf="@+id/GColumn02" /> <!-- Progress Bar -->
     <ImageView
             android:id="@+id/IVEditRating"
-            style="@style/MovieItemEditRating"
+            style="@style/MovieEditRating"
             app:layout_constraintStart_toStartOf="@+id/GColumn02"
             app:layout_constraintEnd_toStartOf="@+id/GColumn03"
             app:layout_constraintBottom_toTopOf="@+id/GRow03"
             app:layout_constraintTop_toTopOf="@+id/GRow02" /> <!-- Edit User Rating -->
     <ImageView
             android:id="@+id/IVReadMore"
-            style="@style/MovieItemReadMore"
+            style="@style/MovieReadMore"
             app:layout_constraintStart_toStartOf="@+id/GColumn02"
             app:layout_constraintEnd_toStartOf="@+id/GColumn03"
             app:layout_constraintBottom_toTopOf="@+id/GRow04"
             app:layout_constraintTop_toTopOf="@+id/GRow03" /> <!-- Read More -->
     <ImageView
             android:id="@+id/IVDeleteMovie"
-            style="@style/MovieItemDeleteMovie"
+            style="@style/MovieDelete"
             app:layout_constraintStart_toStartOf="@+id/GColumn02"
             app:layout_constraintEnd_toStartOf="@+id/GColumn03"
             app:layout_constraintBottom_toTopOf="@+id/GRow05"
             app:layout_constraintTop_toTopOf="@+id/GRow04" /> <!-- Delete Movie -->
     <TextView
             android:id="@+id/TVMovieReleaseDate"
-            style="@style/MovieItemBasicText"
+            style="@style/MovieBasicText"
             android:layout_margin="5dp"
             app:layout_constraintStart_toStartOf="@+id/GColumn01"
             app:layout_constraintTop_toTopOf="@+id/GRow05"

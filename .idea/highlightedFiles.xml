@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectTreeColorHighlighter">
-    <files />
+    <files>
+      <node color="8" path="$PROJECT_DIR$/app/build/generated/source/kapt/debug/androidx/databinding" />
+      <node color="8" path="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/arnaufugarolas/ac01myfavoritemovies" />
+      <node color="8" path="$PROJECT_DIR$/app/src/androidTest/java/com/arnaufugarolas" />
+      <node color="8" path="$PROJECT_DIR$/app/src/test/java/com/arnaufugarolas" />
+    </files>
     <colors>
       <color id="1" value="#4f060d" name="Color 1" enabled="true" />
       <color id="2" value="#44220e" name="Color 2" enabled="true" />
