@@ -17,12 +17,37 @@ class MainViewModel : ViewModel() {
     val movies: LiveData<MutableList<Movie>> get() = _movies
     private val _errorApiRest = MutableLiveData<String?>(null)
     val errorApiRest: LiveData<String?> get() = _errorApiRest
+    private val _movieDetails = MutableLiveData(null as Movie?)
+    val movieDetails: LiveData<Movie?> get() = _movieDetails
 
     val tmdbApiKey: String = "dfe8494cd7c331306cfcc31e6fdeedc4"
     val weatherApiKey: String = "7f7390123a564931910160705231002"
 
     init {
         loadMovies()
+    }
+
+    fun getMovieDetails(id: Int) {
+        viewModelScope.launch {
+            _loading.value = true
+            _movieDetails.value = null
+            _errorApiRest.value = null
+
+            try {
+                val response = RetrofitConnection.service.getMovie(id)
+                if (response.isSuccessful) {
+                    _loading.value = false
+                    _movieDetails.value = response.body()
+                } else {
+                    _loading.value = false
+                    _errorApiRest.value = response.errorBody().toString()
+                }
+
+            } catch (e: Exception) {
+                _errorApiRest.value = e.message
+                _loading.value = false
+            }
+        }
     }
 
     fun loadMovies() {

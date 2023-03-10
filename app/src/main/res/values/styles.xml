@@ -150,4 +150,30 @@
         <item name="android:src">@drawable/baseline_sync_problem_24</item>
         <item name="android:visibility">gone</item>
     </style>
+
+    <style name="MovieDetailsText">
+        <item name="android:layout_height">65dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textColor">@color/tea_green</item>
+        <item name="android:autoSizeTextType">uniform</item>
+    </style>
+
+    <style name="MovieDetailsLabel" parent="MovieDetailsText">
+        <item name="android:layout_marginEnd">1dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="MovieDetailsValue" parent="MovieDetailsText">
+        <item name="android:layout_marginStart">1dp</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">end|center_vertical</item>
+    </style>
+
+    <style name="MovieDetailsOverview" parent="MovieDetailsText">
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
 </resources>

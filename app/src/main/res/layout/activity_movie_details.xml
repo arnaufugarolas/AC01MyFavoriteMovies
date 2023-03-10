@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         style="@style/MovieDetailsMain"
         tools:context=".MovieDetails">
 
@@ -14,7 +14,7 @@
             style="@style/Column"
             app:layout_constraintGuide_percent="0.20" /> <!-- Column 20% -->
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/GDetailsColumn03"
+            android:id="@+id/GDetailsColumn04"
             style="@style/Column"
             app:layout_constraintGuide_percent="0.80" /> <!-- Column 80% -->
     <androidx.constraintlayout.widget.Guideline
@@ -29,10 +29,6 @@
             android:id="@+id/GDetailsRow02"
             style="@style/Row"
             app:layout_constraintGuide_percent="0.15" /> <!-- Row 15% -->
-    <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/GDetailsRow03"
-            style="@style/Row"
-            app:layout_constraintGuide_percent="0.95" /> <!-- Row 95% -->
 
     <ImageView
             android:id="@+id/IVDetailsFavorite"
@@ -47,29 +43,165 @@
             app:layout_constraintStart_toStartOf="@+id/GDetailsColumn02"
             app:layout_constraintTop_toTopOf="@+id/GDetailsRow01"
             app:layout_constraintBottom_toTopOf="@+id/GDetailsRow02"
-            app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03"
+            app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn04"
             tools:text="Puss in Boots: The Last Wish" /> <!-- Movie Title -->
     <ImageView
             android:id="@+id/IVDetailsDelete"
             style="@style/MovieDelete"
             app:layout_constraintBottom_toTopOf="@+id/GDetailsRow02"
             app:layout_constraintTop_toBottomOf="@+id/GDetailsRow01"
-            app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
+            app:layout_constraintStart_toEndOf="@+id/GDetailsColumn04"
             app:layout_constraintEnd_toEndOf="@+id/GDetailsColumn05" /> <!-- Delete Movie -->
+
 
     <ScrollView
             android:id="@+id/SVDetails"
             style="@style/Layout00"
-            app:layout_constraintTop_toBottomOf="@id/GDetailsRow02"
-            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow03"
-            app:layout_constraintStart_toEndOf="@id/GDetailsColumn01"
-            app:layout_constraintEnd_toStartOf="@id/GDetailsColumn05">
+            app:layout_constraintStart_toEndOf="@+id/GDetailsColumn01"
+            app:layout_constraintEnd_toEndOf="@+id/GDetailsColumn05"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/GDetailsRow02">
 
         <androidx.constraintlayout.widget.ConstraintLayout style="@style/LayoutMW">
 
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/GDetailsColumn03"
+                    style="@style/Column"
+                    app:layout_constraintGuide_percent="0.35" /> <!-- Column 40% -->
 
+            <TextView
+                    android:id="@+id/TVDetailsLabelOriginalTitle"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Original title:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" /> <!-- Movie Original Title -->
+
+            <TextView
+                    android:id="@+id/TVDetailsDataOriginalTitle"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Puss in Boots: The Last Wish" /> <!-- Movie Original Title -->
+
+            <TextView
+                    android:id="@+id/TVDetailsLabelReleaseDate"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Release date:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelOriginalTitle"
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
+
+            <TextView
+                    android:id="@+id/TVDetailsDataReleaseDate"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataOriginalTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="7 December 2022" />
+
+            <TextView
+                    android:id="@+id/TVDetailsLabelAdult"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Adult content:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelReleaseDate"
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
+
+
+            <TextView
+                    android:id="@+id/TVDetailsDataAdult"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataReleaseDate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="False" />
+
+            <TextView
+                    android:id="@+id/TVDetailsLabelPopularity"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Popularity:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelAdult"
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
+
+
+            <TextView
+                    android:id="@+id/TVDetailsDataPopularity"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataAdult"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="6660.227" />
+
+            <TextView
+                    android:id="@+id/TVDetailsLabelVoteAverage"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Vote average:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelPopularity"
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
+
+
+            <TextView
+                    android:id="@+id/TVDetailsDataVoteAverage"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataPopularity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="8.6" />
+
+            <TextView
+                    android:id="@+id/TVDetailsLabelVoteCount"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Vote count:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelVoteAverage"
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
+
+
+            <TextView
+                    android:id="@+id/TVDetailsDataVoteCount"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataVoteAverage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="2814" />
+
+            <TextView
+                    android:id="@+id/TVDetailsLabelMyScore"
+                    style="@style/MovieDetailsLabel"
+                    android:text="My Score:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelVoteCount"
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
+
+
+            <TextView
+                    android:id="@+id/TVDetailsDataMyScore"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataVoteCount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="9" />
+
+            <TextView
+                    android:id="@+id/TVDetailsLabelOverview"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Overview:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelMyScore"
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
+
+            <TextView
+                    android:id="@+id/TVDetailsDataOverview"
+                    style="@style/MovieDetailsOverview"
+                    tools:text="Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives."
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelOverview"
+                    android:justificationMode="inter_word" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView> <!-- Scroll View -->
-
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
