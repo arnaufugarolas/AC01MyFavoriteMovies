@@ -6,4 +6,14 @@
     <string name="edit_user_rating">Edit User Rating</string>
     <string name="error">Error</string>
     <string name="delete_movie">Delete Movie</string>
+    <string name="overview">Overview:</string>
+    <string name="my_score">My Score:</string>
+    <string name="vote_count">Vote count:</string>
+    <string name="vote_average">Vote average:</string>
+    <string name="popularity">Popularity:</string>
+    <string name="adult_content">Adult content:</string>
+    <string name="release_date">Release date:</string>
+    <string name="original_title">Original title:</string>
+    <string name="add">Add</string>
+    <string name="search">Search</string>
 </resources>

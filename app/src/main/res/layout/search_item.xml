@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        style="@style/MovieItemMain">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GSearchItemColumn01"
+            app:layout_constraintGuide_percent="0.05"
+            style="@style/Column" /> <!-- Column 05% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GSearchItemColumn02"
+            app:layout_constraintGuide_percent="0.50"
+            style="@style/Column" /> <!-- Column 50% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GSearchItemColumn03"
+            app:layout_constraintGuide_percent="0.80"
+            style="@style/Column" /> <!-- Column 80% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GSearchItemColumn04"
+            app:layout_constraintGuide_percent="0.95"
+            style="@style/Column" /> <!-- Column 95% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GSearchItemRow01"
+            app:layout_constraintGuide_percent="0.05"
+            style="@style/Row" />  <!-- Row 05% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GSearchItemRow02"
+            app:layout_constraintGuide_percent="0.20"
+            style="@style/Row" /> <!-- Row 20% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GSearchItemRow03"
+            app:layout_constraintGuide_percent="0.75"
+            style="@style/Row" /> <!-- Row 75% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GSearchItemRow04"
+            app:layout_constraintGuide_percent="0.95"
+            style="@style/Row" /> <!-- Row 95% -->
+
+    <TextView
+            android:id="@+id/TVSearchItemMovieTitle"
+            style="@style/MovieTitle"
+            app:layout_constraintStart_toStartOf="@+id/GSearchItemColumn01"
+            app:layout_constraintTop_toTopOf="@+id/GSearchItemRow01"
+            app:layout_constraintBottom_toTopOf="@+id/GSearchItemRow02"
+            app:layout_constraintEnd_toStartOf="@+id/GSearchItemColumn03"
+            tools:text="Puss in Boots: The Last Wish" /> <!-- Movie Title -->
+    <ImageView
+            android:id="@+id/IVSearchItemAdd"
+            style="@style/MovieBasicImage"
+            android:src="@drawable/outline_add_box_24"
+            app:layout_constraintStart_toStartOf="@+id/GSearchItemColumn03"
+            app:layout_constraintEnd_toStartOf="@+id/GSearchItemColumn04"
+            app:layout_constraintBottom_toTopOf="@+id/GSearchItemRow02"
+            app:layout_constraintTop_toTopOf="@+id/GSearchItemRow01" /> <!-- Favorite -->
+    <ImageView
+            android:id="@+id/IVSearchItemErrorImage"
+            style="@style/MovieItemError"
+            app:layout_constraintBottom_toTopOf="@+id/GSearchItemRow03"
+            app:layout_constraintStart_toStartOf="@+id/GSearchItemColumn01"
+            app:layout_constraintTop_toTopOf="@+id/GSearchItemRow02"
+            app:layout_constraintEnd_toStartOf="@+id/GSearchItemColumn04" /> <!-- Movie Poster -->
+    <ImageView
+            android:id="@+id/IVSearchItemMoviePoster"
+            style="@style/MoviePoster"
+            app:layout_constraintBottom_toTopOf="@+id/GSearchItemRow03"
+            app:layout_constraintStart_toStartOf="@+id/GSearchItemColumn01"
+            app:layout_constraintTop_toTopOf="@+id/GSearchItemRow02"
+            app:layout_constraintEnd_toStartOf="@+id/GSearchItemColumn04" /> <!-- Movie Poster -->
+    <ProgressBar
+            android:id="@+id/PBSearchItemMoviePoster"
+            style="@style/Loading"
+            app:layout_constraintBottom_toTopOf="@+id/GSearchItemRow03"
+            app:layout_constraintStart_toStartOf="@+id/GSearchItemColumn01"
+            app:layout_constraintTop_toTopOf="@+id/GSearchItemRow02"
+            app:layout_constraintEnd_toStartOf="@+id/GSearchItemColumn04" /> <!-- Progress Bar -->
+    <TextView
+            android:id="@+id/TVSearchItemMovieReleaseDate"
+            style="@style/MovieBasicText"
+            app:layout_constraintStart_toStartOf="@+id/GSearchItemColumn01"
+            app:layout_constraintTop_toTopOf="@+id/GSearchItemRow03"
+            app:layout_constraintBottom_toTopOf="@+id/GSearchItemRow04"
+            app:layout_constraintEnd_toStartOf="@+id/GSearchItemColumn02"
+            tools:text="07 december 2022" /> <!-- Movie Release Date -->
+    <TextView
+            android:id="@+id/TVSearchItemMoviePopularity"
+            style="@style/MovieItemRatingText"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="@+id/GSearchItemColumn02"
+            app:layout_constraintTop_toTopOf="@+id/GSearchItemRow03"
+            app:layout_constraintBottom_toTopOf="@+id/GSearchItemRow04"
+            app:layout_constraintEnd_toStartOf="@+id/GSearchItemColumn04"
+            tools:text="6660.227" /> <!-- Movie Popularity -->
+</androidx.constraintlayout.widget.ConstraintLayout>

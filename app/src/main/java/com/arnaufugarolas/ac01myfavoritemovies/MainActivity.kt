@@ -1,10 +1,14 @@
 package com.arnaufugarolas.ac01myfavoritemovies
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.arnaufugarolas.ac01myfavoritemovies.adapters.MovieAdapter
 import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Difference
 import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
 import com.arnaufugarolas.ac01myfavoritemovies.databinding.ActivityMainBinding
@@ -41,6 +45,27 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
         init()
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.loadMovies()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        setupMenu(menu!!)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun setupMenu(menu: Menu) {
+        supportActionBar?.title = "My Favorite Movies"
+        menuInflater.inflate(R.menu.main_activity_menu, menu)
+
+        menu.findItem(R.id.MIAddMovie).setOnMenuItemClickListener {
+            startActivity(Intent(applicationContext, SearchMovies::class.java))
+            true
+        }
+
+    }
+
     private fun init() {
         setupRecyclerView()
         setupObservers()
@@ -53,34 +78,12 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
     }
 
     private fun setupObservers() {
-        viewModel.movies.observe(this) {
-            val differences = getMutableListDifferences(adapter.movies, it.toMutableList())
-            for (difference in differences) {
-                when (difference.type) {
-                    DifferenceType.ADDED -> {
-                        adapter.movies.add(difference.newIndex!!, difference.newItem!!)
-                        binding.RVMainMovies.adapter?.notifyItemInserted(
-                            adapter.movies.indexOf(
-                                difference.newItem
-                            )
-                        )
-                    }
-
-                    DifferenceType.DELETED -> {
-                        val index = adapter.movies.indexOf(difference.oldItem!!)
-                        adapter.movies.removeAt(index)
-                        binding.RVMainMovies.adapter?.notifyItemRemoved(index)
-                    }
-                }
-            }
-            if (it.isEmpty() && !viewModel.loading.value!!) {
-                binding.IVMainError.visibility = View.VISIBLE
-            } else {
-                binding.IVMainError.visibility = View.GONE
-            }
+        viewModel.movies.observeForever { movies ->
+            Log.d("Movies", movies.size.toString())
+            checkMovies(movies)
         }
 
-        viewModel.loading.observe(this) {
+        viewModel.loadingMovies.observe(this) {
             binding.PBMainLoading.visibility = if (it) View.VISIBLE else View.GONE
             if (adapter.movies.isEmpty() && !it) {
                 binding.IVMainError.visibility = View.VISIBLE
@@ -96,6 +99,31 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
                     .setTextColor(getColor(R.color.white))
                     .show()
             }
+        }
+    }
+
+    private fun checkMovies(movies: MutableList<Movie> = viewModel.movies.value!!) {
+        val differences = getMutableListDifferences(adapter.movies, movies.toMutableList())
+        for (difference in differences) {
+            when (difference.type) {
+                DifferenceType.ADDED -> {
+                    adapter.movies.add(difference.newIndex!!, difference.newItem!!)
+                    binding.RVMainMovies.adapter?.notifyItemInserted(
+                        adapter.movies.indexOf(difference.newItem)
+                    )
+                }
+
+                DifferenceType.DELETED -> {
+                    val index = adapter.movies.indexOf(difference.oldItem)
+                    adapter.movies.removeAt(index)
+                    binding.RVMainMovies.adapter?.notifyItemRemoved(index)
+                }
+            }
+        }
+        if (movies.isEmpty() && !viewModel.loadingMovies.value!!) {
+            binding.IVMainError.visibility = View.VISIBLE
+        } else {
+            binding.IVMainError.visibility = View.GONE
         }
     }
 
@@ -124,7 +152,6 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
             true
         }
     }
-
 
     private fun <Movie> getMutableListDifferences(
         oldList: MutableList<Movie>,

@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ProjectTreeColorHighlighter">
     <files>
+      <node color="8" path="$PROJECT_DIR$/app/build/generated/source/kapt/debug/androidx" />
       <node color="8" path="$PROJECT_DIR$/app/build/generated/source/kapt/debug/androidx/databinding" />
+      <node color="8" path="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com" />
       <node color="8" path="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/arnaufugarolas/ac01myfavoritemovies" />
+      <node color="8" path="$PROJECT_DIR$/app/src/androidTest/java/com" />
       <node color="8" path="$PROJECT_DIR$/app/src/androidTest/java/com/arnaufugarolas" />
+      <node color="8" path="$PROJECT_DIR$/app/src/test/java/com" />
       <node color="8" path="$PROJECT_DIR$/app/src/test/java/com/arnaufugarolas" />
     </files>
     <colors>

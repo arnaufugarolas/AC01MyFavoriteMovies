@@ -14,68 +14,81 @@
             style="@style/Column"
             app:layout_constraintGuide_percent="0.20" /> <!-- Column 20% -->
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/GDetailsColumn04"
+            android:id="@+id/GDetailsColumn05"
             style="@style/Column"
             app:layout_constraintGuide_percent="0.80" /> <!-- Column 80% -->
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/GDetailsColumn05"
+            android:id="@+id/GDetailsColumn06"
             style="@style/Column"
             app:layout_constraintGuide_percent="0.95" /> <!-- Column 95% -->
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GDetailsRow01"
             style="@style/Row"
-            app:layout_constraintGuide_percent="0.05" /> <!-- Row 05% -->
+            app:layout_constraintGuide_percent="0.10" /> <!-- Row 10% -->
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GDetailsRow02"
             style="@style/Row"
-            app:layout_constraintGuide_percent="0.15" /> <!-- Row 15% -->
+            app:layout_constraintGuide_percent="0.50" /> <!-- Row 50% -->
+
+    <ProgressBar
+            style="@style/Loading"
+            android:id="@+id/PBDetailsLoading"
+            app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn05"
+            app:layout_constraintStart_toStartOf="@+id/GDetailsColumn02"
+            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow02"
+            app:layout_constraintTop_toBottomOf="@+id/GDetailsRow01" /> <!-- Loading -->
 
     <ImageView
             android:id="@+id/IVDetailsFavorite"
             style="@style/MovieFavorite"
-            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow02"
-            app:layout_constraintTop_toBottomOf="@+id/GDetailsRow01"
+            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow01"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="@+id/GDetailsColumn01"
             app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn02" /> <!-- Favorite -->
+
     <TextView
             android:id="@+id/TVDetailsMovieTitle"
             style="@style/MovieTitle"
             app:layout_constraintStart_toStartOf="@+id/GDetailsColumn02"
-            app:layout_constraintTop_toTopOf="@+id/GDetailsRow01"
-            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow02"
-            app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn04"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow01"
+            app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn05"
             tools:text="Puss in Boots: The Last Wish" /> <!-- Movie Title -->
+
     <ImageView
             android:id="@+id/IVDetailsDelete"
             style="@style/MovieDelete"
-            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow02"
-            app:layout_constraintTop_toBottomOf="@+id/GDetailsRow01"
-            app:layout_constraintStart_toEndOf="@+id/GDetailsColumn04"
-            app:layout_constraintEnd_toEndOf="@+id/GDetailsColumn05" /> <!-- Delete Movie -->
-
+            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow01"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/GDetailsColumn05"
+            app:layout_constraintEnd_toEndOf="@+id/GDetailsColumn06" /> <!-- Delete Movie -->
 
     <ScrollView
             android:id="@+id/SVDetails"
             style="@style/Layout00"
             app:layout_constraintStart_toEndOf="@+id/GDetailsColumn01"
-            app:layout_constraintEnd_toEndOf="@+id/GDetailsColumn05"
+            app:layout_constraintEnd_toEndOf="@+id/GDetailsColumn06"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/GDetailsRow02">
+            app:layout_constraintTop_toTopOf="@+id/GDetailsRow01"> <!-- Details Scroll View -->
 
         <androidx.constraintlayout.widget.ConstraintLayout style="@style/LayoutMW">
 
             <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/GDetailsColumn03"
                     style="@style/Column"
-                    app:layout_constraintGuide_percent="0.35" /> <!-- Column 40% -->
+                    app:layout_constraintGuide_percent="0.40" /> <!-- Column 40% -->
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/GDetailsColumn04"
+                    style="@style/Column"
+                    app:layout_constraintGuide_percent="0.80" /> <!-- Column 40% -->
 
             <TextView
                     android:id="@+id/TVDetailsLabelOriginalTitle"
                     style="@style/MovieDetailsLabel"
-                    android:text="Original title:"
+                    android:text="@string/original_title"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" /> <!-- Movie Original Title -->
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" /> <!-- Movie Original Title Label -->
 
             <TextView
                     android:id="@+id/TVDetailsDataOriginalTitle"
@@ -83,15 +96,15 @@
                     app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="Puss in Boots: The Last Wish" /> <!-- Movie Original Title -->
+                    tools:text="Puss in Boots: The Last Wish" /> <!-- Movie Original Title Data -->
 
             <TextView
                     android:id="@+id/TVDetailsLabelReleaseDate"
                     style="@style/MovieDetailsLabel"
-                    android:text="Release date:"
+                    android:text="@string/release_date"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelOriginalTitle"
-                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" /> <!-- Release Date Label -->
 
             <TextView
                     android:id="@+id/TVDetailsDataReleaseDate"
@@ -99,16 +112,15 @@
                     app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataOriginalTitle"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="7 December 2022" />
+                    tools:text="7 December 2022" /> <!-- Release Date Data -->
 
             <TextView
                     android:id="@+id/TVDetailsLabelAdult"
                     style="@style/MovieDetailsLabel"
-                    android:text="Adult content:"
+                    android:text="@string/adult_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelReleaseDate"
-                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
-
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" /> <!-- Adult Content Label -->
 
             <TextView
                     android:id="@+id/TVDetailsDataAdult"
@@ -116,16 +128,15 @@
                     app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataReleaseDate"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="False" />
+                    tools:text="False" /> <!-- Adult Content Data -->
 
             <TextView
                     android:id="@+id/TVDetailsLabelPopularity"
                     style="@style/MovieDetailsLabel"
-                    android:text="Popularity:"
+                    android:text="@string/popularity"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelAdult"
-                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
-
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" /> <!-- Popularity Label -->
 
             <TextView
                     android:id="@+id/TVDetailsDataPopularity"
@@ -133,16 +144,15 @@
                     app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataAdult"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="6660.227" />
+                    tools:text="6660.227" /> <!-- Popularity Data -->
 
             <TextView
                     android:id="@+id/TVDetailsLabelVoteAverage"
                     style="@style/MovieDetailsLabel"
-                    android:text="Vote average:"
+                    android:text="@string/vote_average"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelPopularity"
-                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
-
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" /> <!-- Vote Average Label -->
 
             <TextView
                     android:id="@+id/TVDetailsDataVoteAverage"
@@ -150,16 +160,15 @@
                     app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataPopularity"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="8.6" />
+                    tools:text="8.6" /> <!-- Vote Average Data -->
 
             <TextView
                     android:id="@+id/TVDetailsLabelVoteCount"
                     style="@style/MovieDetailsLabel"
-                    android:text="Vote count:"
+                    android:text="@string/vote_count"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelVoteAverage"
-                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
-
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" /> <!-- Vote Count Label -->
 
             <TextView
                     android:id="@+id/TVDetailsDataVoteCount"
@@ -167,41 +176,47 @@
                     app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataVoteAverage"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="2814" />
+                    tools:text="2814" /> <!-- Vote Count Data -->
 
             <TextView
                     android:id="@+id/TVDetailsLabelMyScore"
                     style="@style/MovieDetailsLabel"
-                    android:text="My Score:"
+                    android:text="@string/my_score"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelVoteCount"
-                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
-
+                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" /> <!-- My Score Label -->
 
             <TextView
                     android:id="@+id/TVDetailsDataMyScore"
                     style="@style/MovieDetailsValue"
                     app:layout_constraintStart_toEndOf="@+id/GDetailsColumn03"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataVoteCount"
+                    app:layout_constraintEnd_toEndOf="@+id/GDetailsColumn04"
+                    tools:text="9" /> <!-- My Score Data -->
+
+            <ImageView
+                    android:id="@+id/IVDetailsEditRating"
+                    style="@style/MovieEditRating"
+                    app:layout_constraintBottom_toTopOf="@+id/TVDetailsLabelOverview"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="9" />
+                    app:layout_constraintStart_toEndOf="@+id/TVDetailsDataMyScore"
+                    app:layout_constraintTop_toBottomOf="@+id/TVDetailsDataVoteCount" /> <!-- Edit Rating -->
 
             <TextView
                     android:id="@+id/TVDetailsLabelOverview"
                     style="@style/MovieDetailsLabel"
-                    android:text="Overview:"
+                    android:text="@string/overview"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelMyScore"
-                    app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn03" />
+                    app:layout_constraintEnd_toEndOf="parent" /> <!-- Overview Label -->
 
             <TextView
                     android:id="@+id/TVDetailsDataOverview"
                     style="@style/MovieDetailsOverview"
-                    tools:text="Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives."
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/TVDetailsLabelOverview"
-                    android:justificationMode="inter_word" />
+                    tools:text="Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives." /> <!-- Overview Data -->
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,18 +3,18 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         style="@style/MovieItemMain"
-        tools:context=".MovieAdapter">
+        tools:context=".adapters.MovieAdapter">
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GColumn01"
             app:layout_constraintGuide_percent="0.05"
             style="@style/Column" /> <!-- Column 05% -->
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/GColumn02"
+            android:id="@+id/GColumn03"
             app:layout_constraintGuide_percent="0.80"
             style="@style/Column" /> <!-- Column 80% -->
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/GColumn03"
+            android:id="@+id/GColumn04"
             app:layout_constraintGuide_percent="0.95"
             style="@style/Column" /> <!-- Column 95% -->
     <androidx.constraintlayout.widget.Guideline
@@ -48,13 +48,13 @@
             app:layout_constraintStart_toStartOf="@+id/GColumn01"
             app:layout_constraintTop_toTopOf="@+id/GRow01"
             app:layout_constraintBottom_toTopOf="@+id/GRow02"
-            app:layout_constraintEnd_toStartOf="@+id/GColumn02"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
             tools:text="Movie Title" /> <!-- Movie Title -->
     <ImageView
             android:id="@+id/IVFavorite"
             style="@style/MovieFavorite"
-            app:layout_constraintStart_toStartOf="@+id/GColumn02"
-            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
+            app:layout_constraintStart_toStartOf="@+id/GColumn03"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn04"
             app:layout_constraintBottom_toTopOf="@+id/GRow02"
             app:layout_constraintTop_toTopOf="@+id/GRow01" /> <!-- Favorite -->
     <ImageView
@@ -63,40 +63,40 @@
             app:layout_constraintBottom_toTopOf="@+id/GRow05"
             app:layout_constraintStart_toStartOf="@+id/GColumn01"
             app:layout_constraintTop_toTopOf="@+id/GRow02"
-            app:layout_constraintEnd_toStartOf="@+id/GColumn02" /> <!-- Movie Poster -->
+            app:layout_constraintEnd_toStartOf="@+id/GColumn03" /> <!-- Movie Poster -->
     <ImageView
             android:id="@+id/IVMoviePoster"
             style="@style/MoviePoster"
             app:layout_constraintBottom_toTopOf="@+id/GRow05"
             app:layout_constraintStart_toStartOf="@+id/GColumn01"
             app:layout_constraintTop_toTopOf="@+id/GRow02"
-            app:layout_constraintEnd_toStartOf="@+id/GColumn02" /> <!-- Movie Poster -->
+            app:layout_constraintEnd_toStartOf="@+id/GColumn03" /> <!-- Movie Poster -->
     <ProgressBar
             android:id="@+id/PBMoviePoster"
             style="@style/Loading"
             app:layout_constraintBottom_toTopOf="@+id/GRow05"
             app:layout_constraintStart_toStartOf="@+id/GColumn01"
             app:layout_constraintTop_toTopOf="@+id/GRow02"
-            app:layout_constraintEnd_toStartOf="@+id/GColumn02" /> <!-- Progress Bar -->
+            app:layout_constraintEnd_toStartOf="@+id/GColumn03" /> <!-- Progress Bar -->
     <ImageView
             android:id="@+id/IVEditRating"
             style="@style/MovieEditRating"
-            app:layout_constraintStart_toStartOf="@+id/GColumn02"
-            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
+            app:layout_constraintStart_toStartOf="@+id/GColumn03"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn04"
             app:layout_constraintBottom_toTopOf="@+id/GRow03"
             app:layout_constraintTop_toTopOf="@+id/GRow02" /> <!-- Edit User Rating -->
     <ImageView
             android:id="@+id/IVReadMore"
             style="@style/MovieReadMore"
-            app:layout_constraintStart_toStartOf="@+id/GColumn02"
-            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
+            app:layout_constraintStart_toStartOf="@+id/GColumn03"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn04"
             app:layout_constraintBottom_toTopOf="@+id/GRow04"
             app:layout_constraintTop_toTopOf="@+id/GRow03" /> <!-- Read More -->
     <ImageView
             android:id="@+id/IVDeleteMovie"
             style="@style/MovieDelete"
-            app:layout_constraintStart_toStartOf="@+id/GColumn02"
-            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
+            app:layout_constraintStart_toStartOf="@+id/GColumn03"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn04"
             app:layout_constraintBottom_toTopOf="@+id/GRow05"
             app:layout_constraintTop_toTopOf="@+id/GRow04" /> <!-- Delete Movie -->
     <TextView
@@ -106,14 +106,14 @@
             app:layout_constraintStart_toStartOf="@+id/GColumn01"
             app:layout_constraintTop_toTopOf="@+id/GRow05"
             app:layout_constraintBottom_toTopOf="@+id/GRow07"
-            app:layout_constraintEnd_toStartOf="@+id/GColumn02"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
             tools:text="10 July 2003" /> <!-- Movie Release Date -->
     <TextView
             android:id="@+id/TVMovieRating"
             style="@style/MovieItemRatingText"
-            app:layout_constraintStart_toStartOf="@+id/GColumn02"
+            app:layout_constraintStart_toStartOf="@+id/GColumn03"
             app:layout_constraintTop_toTopOf="@+id/GRow05"
             app:layout_constraintBottom_toTopOf="@+id/GRow07"
-            app:layout_constraintEnd_toStartOf="@+id/GColumn03"
+            app:layout_constraintEnd_toStartOf="@+id/GColumn04"
             tools:text="10" /> <!-- Movie Rating -->
 </androidx.constraintlayout.widget.ConstraintLayout>

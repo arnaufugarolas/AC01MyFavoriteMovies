@@ -1,12 +1,13 @@
 package com.arnaufugarolas.ac01myfavoritemovies.server
 
+import com.arnaufugarolas.ac01myfavoritemovies.Secrets.TMDB_BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
-object RetrofitConnection {
+object RetrofitConnectionTMDB {
     private val okHttpClient = HttpLoggingInterceptor().run {
         level = HttpLoggingInterceptor.Level.BODY
         OkHttpClient.Builder()
@@ -14,10 +15,10 @@ object RetrofitConnection {
     }
 
     private val builder = Retrofit.Builder()
-        .baseUrl("http://10.0.26.76:3000")
+        .baseUrl(TMDB_BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val service: RetrofitEndPoints = builder.create()
+    val service: RetrofitEndPointsTMDB = builder.create()
 }

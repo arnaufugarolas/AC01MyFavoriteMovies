@@ -173,7 +173,14 @@
 
     <style name="MovieDetailsOverview" parent="MovieDetailsText">
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:justificationMode">inter_word</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:breakStrategy">simple</item>
     </style>
 
+    <style name="SearchMoviesImage" parent="MovieBasicImage">
+        <item name="android:contentDescription">Search</item>
+        <item name="android:src">@drawable/baseline_search_24</item>
+    </style>
 
 </resources>

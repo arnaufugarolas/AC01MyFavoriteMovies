@@ -13,6 +13,7 @@
         14
       ],
       "id": 315162,
+      "my_score": 8,
       "original_language": "en",
       "original_title": "Puss in Boots: The Last Wish",
       "overview": "Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.",
@@ -22,8 +23,7 @@
       "title": "Puss in Boots: The Last Wish",
       "video": false,
       "vote_average": 8.6,
-      "vote_count": 2814,
-      "my_score": 9
+      "vote_count": 2814
     },
     {
       "adult": false,
@@ -35,7 +35,6 @@
         35
       ],
       "id": 536554,
-      "my_score": 5,
       "original_language": "en",
       "original_title": "M3GAN",
       "overview": "A brilliant toy company roboticist uses artificial intelligence to develop M3GAN, a life-like doll programmed to emotionally bond with her newly orphaned niece. But when the doll's programming works too well, she becomes overprotective of her new friend with terrifying results.",
@@ -45,7 +44,8 @@
       "title": "M3GAN",
       "video": false,
       "vote_average": 7.6,
-      "vote_count": 899
+      "vote_count": 899,
+      "my_score": 8
     },
     {
       "adult": false,
@@ -90,6 +90,50 @@
       "vote_average": 7.6,
       "vote_count": 166,
       "my_score": 5
+    },
+    {
+      "adult": false,
+      "backdrop_path": "https://image.tmdb.org/t/p/original/sBOenwOZGRN5nZZGw4TxwtnfrEf.jpg",
+      "favorite": false,
+      "genre_ids": [
+        28,
+        35,
+        80,
+        53
+      ],
+      "id": 899112,
+      "my_score": 6,
+      "original_language": "en",
+      "original_title": "Violent Night",
+      "overview": "When a team of mercenaries breaks into a wealthy family compound on Christmas Eve, taking everyone inside hostage, the team isn’t prepared for a surprise combatant: Santa Claus is on the grounds, and he’s about to show why this Nick is no saint.",
+      "popularity": 1514.794,
+      "poster_path": "https://image.tmdb.org/t/p/original/1XSYOP0JjjyMz1irihvWywro82r.jpg",
+      "release_date": "2022-11-30",
+      "title": "Violent Night",
+      "video": false,
+      "vote_average": 7.7,
+      "vote_count": 1061
+    },
+    {
+      "adult": false,
+      "backdrop_path": "https://image.tmdb.org/t/p/original/7tbeoSTWW2cWPecjQo9fcdf0Hzv.jpg",
+      "favorite": false,
+      "genre_ids": [
+        12,
+        14
+      ],
+      "id": 672,
+      "my_score": 7,
+      "original_language": "en",
+      "original_title": "Harry Potter and the Chamber of Secrets",
+      "overview": "Harry regresa a su segundo año a Hogwarts, pero descubre que cosas malas ocurren debido a que un sitio llamado la Cámara de los Secretos ha sido abierto por el heredero de Slytherin y hará que los hijos de muggles, los impuros, aparezcan petrificados misteriosamente por un animal monstruoso.",
+      "popularity": 222.335,
+      "poster_path": "https://image.tmdb.org/t/p/original/3nvGqfZE3yrsqehpF107byUdUSq.jpg",
+      "release_date": "2002-11-13",
+      "title": "Harry Potter y la cámara secreta",
+      "video": false,
+      "vote_average": 7.722,
+      "vote_count": 19585
     }
   ],
   "conf": [

@@ -4,7 +4,7 @@ import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
 import retrofit2.Response
 import retrofit2.http.*
 
-interface RetrofitEndPoints {
+interface RetrofitEndPointsJSONServer {
     @GET("movies")
     suspend fun listMovies(): Response<List<Movie>>
 

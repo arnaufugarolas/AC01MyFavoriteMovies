@@ -1,4 +1,4 @@
-package com.arnaufugarolas.ac01myfavoritemovies
+package com.arnaufugarolas.ac01myfavoritemovies.adapters
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -11,6 +11,9 @@ import android.widget.ProgressBar
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.arnaufugarolas.ac01myfavoritemovies.EditRatingDialog
+import com.arnaufugarolas.ac01myfavoritemovies.MovieDetails
+import com.arnaufugarolas.ac01myfavoritemovies.R
 import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
 import com.arnaufugarolas.ac01myfavoritemovies.databinding.MovieItemBinding
 import com.bumptech.glide.Glide
@@ -19,6 +22,8 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 
 class MovieAdapter(
@@ -90,7 +95,10 @@ class MovieAdapter(
 
     private fun bind(movie: Movie, holder: ViewHolder) {
         holder.binding.TVMovieTitle.text = movie.title // Set the title
-        holder.binding.TVMovieReleaseDate.text = movie.releaseDate // Set the release date
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+        holder.binding.TVMovieReleaseDate.text =
+            outputFormat.format(inputFormat.parse(movie.releaseDate!!)!!) // Set the release date
         holder.binding.TVMovieRating.text = movie.voteAverage.toString() // Set the rating
 
         if (movie.favorite == true) { // If the movie is favorite, show the star
