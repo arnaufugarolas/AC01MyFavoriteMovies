@@ -6,36 +6,36 @@
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchItemColumn01"
-            app:layout_constraintGuide_percent="0.05"
-            style="@style/Column" /> <!-- Column 05% -->
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.05" /> <!-- Column 05% -->
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchItemColumn02"
-            app:layout_constraintGuide_percent="0.50"
-            style="@style/Column" /> <!-- Column 50% -->
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.50" /> <!-- Column 50% -->
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchItemColumn03"
-            app:layout_constraintGuide_percent="0.80"
-            style="@style/Column" /> <!-- Column 80% -->
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.80" /> <!-- Column 80% -->
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchItemColumn04"
-            app:layout_constraintGuide_percent="0.95"
-            style="@style/Column" /> <!-- Column 95% -->
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.95" /> <!-- Column 95% -->
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchItemRow01"
-            app:layout_constraintGuide_percent="0.05"
-            style="@style/Row" />  <!-- Row 05% -->
+            style="@style/Row"
+            app:layout_constraintGuide_percent="0.05" />  <!-- Row 05% -->
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchItemRow02"
-            app:layout_constraintGuide_percent="0.20"
-            style="@style/Row" /> <!-- Row 20% -->
+            style="@style/Row"
+            app:layout_constraintGuide_percent="0.20" /> <!-- Row 20% -->
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchItemRow03"
-            app:layout_constraintGuide_percent="0.75"
-            style="@style/Row" /> <!-- Row 75% -->
+            style="@style/Row"
+            app:layout_constraintGuide_percent="0.75" /> <!-- Row 75% -->
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchItemRow04"
-            app:layout_constraintGuide_percent="0.95"
-            style="@style/Row" /> <!-- Row 95% -->
+            style="@style/Row"
+            app:layout_constraintGuide_percent="0.95" /> <!-- Row 95% -->
 
     <TextView
             android:id="@+id/TVSearchItemMovieTitle"
@@ -45,10 +45,10 @@
             app:layout_constraintBottom_toTopOf="@+id/GSearchItemRow02"
             app:layout_constraintEnd_toStartOf="@+id/GSearchItemColumn03"
             tools:text="Puss in Boots: The Last Wish" /> <!-- Movie Title -->
+
     <ImageView
             android:id="@+id/IVSearchItemAdd"
-            style="@style/MovieBasicImage"
-            android:src="@drawable/outline_add_box_24"
+            style="@style/MovieFavorite"
             app:layout_constraintStart_toStartOf="@+id/GSearchItemColumn03"
             app:layout_constraintEnd_toStartOf="@+id/GSearchItemColumn04"
             app:layout_constraintBottom_toTopOf="@+id/GSearchItemRow02"

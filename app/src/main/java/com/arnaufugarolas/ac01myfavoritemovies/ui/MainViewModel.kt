@@ -27,6 +27,12 @@ class MainViewModel : ViewModel() {
     val searchedMovies: LiveData<MutableList<Movie>> get() = _searchedMovies
     private val _searching = MutableLiveData(false)
     val searching: LiveData<Boolean> get() = _searching
+    private val _addMovieError = MutableLiveData<String?>(null)
+    val addMovieError: LiveData<String?> get() = _addMovieError
+    private val _addingMovie = MutableLiveData(false)
+    val addingMovie: LiveData<Boolean> get() = _addingMovie
+    private val _addedMovie = MutableLiveData(false)
+    val addedMovie: LiveData<Boolean> get() = _addedMovie
 
     fun searchMovies(query: String) {
         viewModelScope.launch {
@@ -123,14 +129,27 @@ class MainViewModel : ViewModel() {
 
     fun addMovie(movie: Movie) {
         viewModelScope.launch {
+            _addedMovie.value = false
+            _addMovieError.value = null
+            _addingMovie.value = true
             try {
-                RetrofitConnectionJSONServer.service.newMovie(movie)
+                if (checkMovieExists(movie)) {
+                    RetrofitConnectionJSONServer.service.updateMovie(movie.id!!, movie)
+                } else {
+                    RetrofitConnectionJSONServer.service.newMovie(movie)
+                }
+                _addedMovie.value = true
             } catch (e: Exception) {
-                _errorApiRest.value = e.message
+                _addMovieError.value = e.message
             } finally {
+                _addingMovie.value = false
                 loadMovies()
             }
         }
+    }
+
+    private fun checkMovieExists(movie: Movie): Boolean {
+        return movies.value?.any { it.id == movie.id } ?: false
     }
 }
 

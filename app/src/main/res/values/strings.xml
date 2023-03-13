@@ -16,4 +16,8 @@
     <string name="original_title">Original title:</string>
     <string name="add">Add</string>
     <string name="search">Search</string>
+    <string name="edit_your_personal_rating_of_the_movie">Edit your personal rating of the movie</string>
+    <string name="_0_10">0-10</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
 </resources>

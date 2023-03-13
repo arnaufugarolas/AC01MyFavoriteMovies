@@ -2,26 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/MovieDetailsMain"
         tools:context=".SearchMovies">
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchColumn01"
             style="@style/Column"
-            android:orientation="vertical"
             app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchColumn02"
             style="@style/Column"
-            android:orientation="vertical"
             app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/GSearchColumn09"
             style="@style/Column"
-            android:orientation="vertical"
             app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -40,39 +36,33 @@
             app:layout_constraintGuide_percent="0.65" />
 
     <EditText
-            android:layout_width="0dp"
-            android:layout_height="75dp"
-            android:inputType="text"
-            android:autoSizeTextType="uniform"
-            android:id="@+id/editTextText"
-            tools:text="Search"
-            android:gravity="start|center_vertical"
+            android:id="@+id/ETSearchQuery"
+            style="@style/EditTextQuery"
+            android:hint="@string/search"
             app:layout_constraintEnd_toStartOf="@+id/GSearchColumn02"
             app:layout_constraintStart_toEndOf="@+id/GSearchColumn01"
-            app:layout_constraintTop_toBottomOf="@+id/GSearchRow01"
-            android:hint="@string/search" />
+            app:layout_constraintTop_toBottomOf="@+id/GSearchRow01" />
 
     <ImageView
             android:id="@+id/IVSearchSearch"
             style="@style/SearchMoviesImage"
             app:layout_constraintEnd_toStartOf="@+id/GSearchColumn09"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextText"
+            app:layout_constraintBottom_toBottomOf="@+id/ETSearchQuery"
             app:layout_constraintStart_toStartOf="@+id/GSearchColumn02"
             app:layout_constraintTop_toTopOf="@+id/GSearchRow01" />
 
     <androidx.recyclerview.widget.RecyclerView
-            style="@style/Layout00"
             android:id="@+id/RVSearchMovies"
-            tools:listitem="@layout/movie_item"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText"
+            style="@style/Layout00"
+            app:layout_constraintTop_toBottomOf="@+id/ETSearchQuery"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/movie_item" />
 
     <ProgressBar
-            android:layout_width="0dp"
-            android:layout_height="0dp"
             android:id="@+id/PBSearchLoading"
+            style="@style/Loading"
             app:layout_constraintEnd_toStartOf="@+id/GSearchColumn09"
             app:layout_constraintBottom_toTopOf="@+id/GSearchRow04"
             app:layout_constraintStart_toEndOf="@+id/GSearchColumn01"

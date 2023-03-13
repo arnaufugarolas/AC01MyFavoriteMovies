@@ -43,25 +43,17 @@
             style="@style/MovieFavorite"
             app:layout_constraintBottom_toTopOf="@+id/GDetailsRow01"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/GDetailsColumn01"
-            app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn02" /> <!-- Favorite -->
+            app:layout_constraintStart_toEndOf="@+id/GDetailsColumn05"
+            app:layout_constraintEnd_toEndOf="@+id/GDetailsColumn06" /> <!-- Favorite -->
 
     <TextView
             android:id="@+id/TVDetailsMovieTitle"
             style="@style/MovieTitle"
-            app:layout_constraintStart_toStartOf="@+id/GDetailsColumn02"
+            app:layout_constraintStart_toStartOf="@+id/GDetailsColumn01"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/GDetailsRow01"
             app:layout_constraintEnd_toStartOf="@+id/GDetailsColumn05"
             tools:text="Puss in Boots: The Last Wish" /> <!-- Movie Title -->
-
-    <ImageView
-            android:id="@+id/IVDetailsDelete"
-            style="@style/MovieDelete"
-            app:layout_constraintBottom_toTopOf="@+id/GDetailsRow01"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/GDetailsColumn05"
-            app:layout_constraintEnd_toEndOf="@+id/GDetailsColumn06" /> <!-- Delete Movie -->
 
     <ScrollView
             android:id="@+id/SVDetails"

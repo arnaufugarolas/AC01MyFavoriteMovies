@@ -1,6 +1,5 @@
 package com.arnaufugarolas.ac01myfavoritemovies.adapters
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -48,94 +47,79 @@ class MovieAdapter(
     }
 
     private fun setLongClickListeners(holder: ViewHolder) {
-        holder.binding.TVMovieTitle.setOnLongClickListener {
-            Snackbar.make(holder.binding.TVMovieTitle, "Movie title", Snackbar.LENGTH_SHORT).show()
+        holder.binding.TVMovieItemTitle.setOnLongClickListener {
+            Snackbar.make(it, "Movie title", Snackbar.LENGTH_SHORT).show()
             true
         }
-        holder.binding.TVMovieReleaseDate.setOnLongClickListener {
-            Snackbar.make(
-                holder.binding.TVMovieReleaseDate,
-                "Movie release date",
-                Snackbar.LENGTH_SHORT
-            ).show()
+        holder.binding.TVMovieItemReleaseDate.setOnLongClickListener {
+            Snackbar.make(it, "Movie release date", Snackbar.LENGTH_SHORT).show()
             true
         }
-        holder.binding.TVMovieRating.setOnLongClickListener {
-            Snackbar.make(holder.binding.TVMovieRating, "Movie rating", Snackbar.LENGTH_SHORT)
-                .show()
+        holder.binding.TVMovieItemRating.setOnLongClickListener {
+            Snackbar.make(it, "Movie rating", Snackbar.LENGTH_SHORT).show()
             true
         }
-        holder.binding.IVFavorite.setOnLongClickListener {
-            Snackbar.make(holder.binding.IVFavorite, "Favorite", Snackbar.LENGTH_SHORT).show()
+        holder.binding.IVMovieItemFavorite.setOnLongClickListener {
+            Snackbar.make(it, "Favorite", Snackbar.LENGTH_SHORT).show()
             true
         }
-        holder.binding.IVEditRating.setOnLongClickListener {
-            Snackbar.make(
-                holder.binding.IVEditRating,
-                "Edit personal rating",
-                Snackbar.LENGTH_SHORT
-            ).show()
+        holder.binding.IVMovieItemEditRating.setOnLongClickListener {
+            Snackbar.make(it, "Edit personal rating", Snackbar.LENGTH_SHORT).show()
             true
         }
-        holder.binding.IVReadMore.setOnLongClickListener {
-            Snackbar.make(holder.binding.IVReadMore, "Read more", Snackbar.LENGTH_SHORT).show()
+        holder.binding.IVMovieItemReadMore.setOnLongClickListener {
+            Snackbar.make(it, "Read more", Snackbar.LENGTH_SHORT).show()
             true
         }
-        holder.binding.IVMoviePoster.setOnLongClickListener {
-            Snackbar.make(holder.binding.IVMoviePoster, "Movie poster", Snackbar.LENGTH_SHORT)
-                .show()
-            true
-        }
-        holder.binding.IVDeleteMovie.setOnLongClickListener {
-            Snackbar.make(holder.binding.IVDeleteMovie, "Delete movie", Snackbar.LENGTH_SHORT)
-                .show()
+        holder.binding.IVMovieItemPoster.setOnLongClickListener {
+            Snackbar.make(it, "Movie poster", Snackbar.LENGTH_SHORT).show()
             true
         }
     }
 
     private fun bind(movie: Movie, holder: ViewHolder) {
-        holder.binding.TVMovieTitle.text = movie.title // Set the title
+        holder.binding.TVMovieItemTitle.text = movie.title // Set the title
         val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
-        holder.binding.TVMovieReleaseDate.text =
+        holder.binding.TVMovieItemReleaseDate.text =
             outputFormat.format(inputFormat.parse(movie.releaseDate!!)!!) // Set the release date
-        holder.binding.TVMovieRating.text = movie.voteAverage.toString() // Set the rating
+        holder.binding.TVMovieItemRating.text = movie.voteAverage.toString() // Set the rating
 
         if (movie.favorite == true) { // If the movie is favorite, show the star
-            holder.binding.IVFavorite.setImageResource(R.drawable.sharp_star)
+            holder.binding.IVMovieItemFavorite.setImageResource(R.drawable.sharp_star)
         } else { // If the movie is not favorite, show the outline star
-            holder.binding.IVFavorite.setImageResource(R.drawable.sharp_star_outline)
+            holder.binding.IVMovieItemFavorite.setImageResource(R.drawable.sharp_star_outline)
         }
 
         if (movie.posterPath != null) { // If there is a poster, show it
             setImageToImageView(
-                holder.binding.IVMoviePoster,
-                holder.binding.PBMoviePoster,
-                holder.binding.IVErrorImage,
+                holder.binding.IVMovieItemPoster,
+                holder.binding.PBMovieItemPoster,
+                holder.binding.IVMovieItemErrorImage,
                 movie.posterPath.toString()
             )
         } else { // If there is no poster, show the error image
-            holder.binding.IVErrorImage.visibility = View.VISIBLE
+            holder.binding.IVMovieItemErrorImage.visibility = View.VISIBLE
         }
 
         if (movie.voteAverage!!.compareTo(7) >= 0) { // Set the color of the rating
-            holder.binding.TVMovieRating.setTextColor(
+            holder.binding.TVMovieItemRating.setTextColor(
                 getColor(
-                    holder.binding.TVMovieRating.context,
+                    holder.binding.TVMovieItemRating.context,
                     R.color.Mantis
                 )
             )
         } else if (movie.voteAverage!!.compareTo(5) >= 0) { // Set the color of the rating
-            holder.binding.TVMovieRating.setTextColor(
+            holder.binding.TVMovieItemRating.setTextColor(
                 getColor(
-                    holder.binding.TVMovieRating.context,
+                    holder.binding.TVMovieItemRating.context,
                     R.color.sunglow
                 )
             )
         } else { // Set the color of the rating
-            holder.binding.TVMovieRating.setTextColor(
+            holder.binding.TVMovieItemRating.setTextColor(
                 getColor(
-                    holder.binding.TVMovieRating.context,
+                    holder.binding.TVMovieItemRating.context,
                     R.color.cornell_red
                 )
             )
@@ -143,31 +127,20 @@ class MovieAdapter(
 
         setLongClickListeners(holder) // Set the long click listeners
 
-        holder.binding.IVFavorite.setOnClickListener {
-            val newMovie = movie.copy()
-            newMovie.favorite = !movie.favorite!!
-            onMovieUpdate(newMovie)
+        holder.binding.IVMovieItemFavorite.setOnClickListener {
+            onMovieDelete(movie)
         }
 
-        holder.binding.IVEditRating.setOnClickListener {
+        holder.binding.IVMovieItemEditRating.setOnClickListener {
             val dialog = EditRatingDialog(movie)
             dialog.show(fragmentManager, "EditRatingDialog")
         }
 
-        holder.binding.IVReadMore.setOnClickListener {
-            val intent = Intent(holder.binding.IVReadMore.context, MovieDetails::class.java)
+        holder.binding.IVMovieItemReadMore.setOnClickListener {
+            val intent =
+                Intent(holder.binding.IVMovieItemReadMore.context, MovieDetails::class.java)
             intent.putExtra("id", movie.id)
-            holder.binding.IVReadMore.context.startActivity(intent)
-        }
-
-        holder.binding.IVDeleteMovie.setOnClickListener {
-            AlertDialog.Builder(it.context)
-                .setMessage("Are you sure you want to delete this movie?")
-                .setPositiveButton("Delete") { _, _ ->
-                    onMovieDelete(movie)
-                }
-                .setNegativeButton("Cancel") { _, _ -> }
-                .show()
+            holder.binding.IVMovieItemReadMore.context.startActivity(intent)
         }
     }
 

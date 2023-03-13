@@ -2,7 +2,6 @@ package com.arnaufugarolas.ac01myfavoritemovies
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.View
 import androidx.activity.viewModels
@@ -13,6 +12,7 @@ import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Difference
 import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
 import com.arnaufugarolas.ac01myfavoritemovies.databinding.ActivityMainBinding
 import com.arnaufugarolas.ac01myfavoritemovies.enumClass.DifferenceType
+import com.arnaufugarolas.ac01myfavoritemovies.enumClass.SortType
 import com.arnaufugarolas.ac01myfavoritemovies.ui.MainViewModel
 import com.arnaufugarolas.ac01myfavoritemovies.ui.MainViewModelFactory
 import com.google.android.material.snackbar.Snackbar
@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
         { viewModel.onMovieDelete(it) },
         { viewModel.onMovieUpdate(it) }
     )
+    private var sortType = SortType.TITLE_ASC
 
     override fun onEditRating(movie: Movie, rating: Int) {
         val editedMovie = movie.copy()
@@ -79,7 +80,6 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
 
     private fun setupObservers() {
         viewModel.movies.observeForever { movies ->
-            Log.d("Movies", movies.size.toString())
             checkMovies(movies)
         }
 
@@ -102,8 +102,22 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
         }
     }
 
+    private fun sortMovies(movies: MutableList<Movie>): MutableList<Movie> {
+        val favoriteMovies = movies.filter { it.favorite == true }.toMutableList()
+
+        return when (sortType) {
+            SortType.TITLE_ASC -> favoriteMovies.sortedBy { it.title }
+            SortType.TITLE_DESC -> favoriteMovies.sortedByDescending { it.title }
+            SortType.RATING_ASC -> favoriteMovies.sortedBy { it.voteAverage }
+            SortType.RATING_DESC -> favoriteMovies.sortedByDescending { it.voteAverage }
+        }.toMutableList()
+    }
+
     private fun checkMovies(movies: MutableList<Movie> = viewModel.movies.value!!) {
-        val differences = getMutableListDifferences(adapter.movies, movies.toMutableList())
+        val oldMovies = sortMovies(adapter.movies)
+        val newMovies = sortMovies(movies)
+        val differences = getMutableListDifferences(oldMovies, newMovies)
+
         for (difference in differences) {
             when (difference.type) {
                 DifferenceType.ADDED -> {
@@ -120,7 +134,7 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
                 }
             }
         }
-        if (movies.isEmpty() && !viewModel.loadingMovies.value!!) {
+        if (newMovies.isEmpty() && !viewModel.loadingMovies.value!!) {
             binding.IVMainError.visibility = View.VISIBLE
         } else {
             binding.IVMainError.visibility = View.GONE

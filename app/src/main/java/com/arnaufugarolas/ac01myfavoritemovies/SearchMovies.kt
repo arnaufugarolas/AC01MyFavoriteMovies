@@ -10,6 +10,7 @@ import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
 import com.arnaufugarolas.ac01myfavoritemovies.databinding.ActivitySearchMoviesBinding
 import com.arnaufugarolas.ac01myfavoritemovies.ui.MainViewModel
 import com.arnaufugarolas.ac01myfavoritemovies.ui.MainViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 
 interface AddMovieListener {
     fun addMovie(movie: Movie, rating: Int)
@@ -43,7 +44,7 @@ class SearchMovies : AppCompatActivity(), AddMovieListener {
 
     private fun setupOnClickListeners() {
         binding.IVSearchSearch.setOnClickListener {
-            val movieName = binding.editTextText.text.toString()
+            val movieName = binding.ETSearchQuery.text.toString()
             viewModel.searchMovies(movieName)
         }
     }
@@ -59,6 +60,26 @@ class SearchMovies : AppCompatActivity(), AddMovieListener {
             binding.PBSearchLoading.visibility = if (it) View.VISIBLE else View.GONE
         }
 
+        viewModel.addMovieError.observe(this) {
+            if (it != null) {
+                Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
+            }
+        }
+
+        viewModel.addingMovie.observe(this) {
+            binding.PBSearchLoading.visibility = if (it) View.VISIBLE else View.GONE
+            binding.RVSearchMovies.visibility = if (it) View.GONE else View.VISIBLE
+        }
+
+        viewModel.addedMovie.observe(this) {
+            if (it) {
+                Snackbar.make(
+                    binding.root,
+                    "Movie added to favorites",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     override fun addMovie(movie: Movie, rating: Int) {

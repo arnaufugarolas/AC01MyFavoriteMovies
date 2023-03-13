@@ -25,12 +25,8 @@ t
 Dapp/src/main/java/com/arnaufugarolas/ac01myfavoritemovies/Secrets.kt,1\d\1dcc3dd94912cd377bc5a99ef88b080afbf01e01
 |
 Lapp/src/main/java/com/arnaufugarolas/ac01myfavoritemovies/dataClass/Movie.kt,d\8\d87ea95d4fcb7d075f8f52dff7d2659154fe77e5
-Ç
-Rapp/src/main/java/com/arnaufugarolas/ac01myfavoritemovies/adapters/MovieAdapter.kt,d\1\d1b160342cd5ca6a014b5ee944c04fe22e2bca94
 è
 _app/src/main/java/com/arnaufugarolas/ac01myfavoritemovies/server/RetrofitEndPointsJSONServer.kt,a\2\a23e5f2d32976afeaff922257b4dacfdce5254b1
-â
-Yapp/src/main/java/com/arnaufugarolas/ac01myfavoritemovies/server/RetrofitEndPointsTMDB.kt,a\3\a346a3e2fb904f1aa67a51ede5521200324f403b
 ä
 Zapp/src/main/java/com/arnaufugarolas/ac01myfavoritemovies/server/RetrofitConnectionTMDB.kt,1\b\1ba837a9fddfcce55e68e78f7c73e06189891dae
 ê

@@ -1,7 +1,6 @@
 package com.arnaufugarolas.ac01myfavoritemovies
 
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
@@ -20,19 +19,21 @@ class MovieDetails : AppCompatActivity(), EditRatingListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.TVDetailsDataOverview.movementMethod = ScrollingMovementMethod()
-
-        val movieId = intent.getIntExtra("id", -1)
-        if (movieId == -1) {
-            finish()
-        }
-        viewModel.getMovieDetails(movieId)
 
         init()
     }
 
     private fun init() {
+        getMovieDetails()
         setupObservers()
+    }
+
+    private fun getMovieDetails() {
+        val movieId = intent.getIntExtra("id", -1)
+        if (movieId == -1) {
+            finish()
+        }
+        viewModel.getMovieDetails(movieId)
     }
 
     private fun setupObservers() {
@@ -51,10 +52,19 @@ class MovieDetails : AppCompatActivity(), EditRatingListener {
                 binding.TVDetailsDataOriginalTitle.text = movie.originalTitle
                 binding.TVDetailsDataVoteCount.text = movie.voteCount.toString()
                 binding.TVDetailsDataVoteAverage.text = movie.voteAverage.toString()
+                binding.IVDetailsFavorite.setImageResource(
+                    if (movie.favorite!!) R.drawable.sharp_star
+                    else R.drawable.sharp_star_outline
+                )
 
                 binding.IVDetailsEditRating.setOnClickListener {
                     val dialog = EditRatingDialog(movie)
                     dialog.show(supportFragmentManager, "EditRatingDialog")
+                }
+
+                binding.IVDetailsFavorite.setOnClickListener {
+                    viewModel.onMovieDelete(movie)
+                    finish()
                 }
             }
         }

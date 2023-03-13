@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        style="@style/LinearLayoutMWV">
+        style="@style/LinearLayoutMWV"
+        android:background="@color/oxford_blue">
 
     <TextView
             style="@style/TextViewTitleDialog"
-            android:text="Edit your personal rating of the movie"
+            android:textColor="@color/tea_green"
+            android:text="@string/edit_your_personal_rating_of_the_movie"
             android:id="@+id/TVTitleDialog" />
 
     <EditText
             style="@style/EditTextDialog"
             android:id="@+id/ETDataDialog"
+            android:textColor="@color/tea_green"
+            android:textColorHint="@color/tea_green"
             android:inputType="number"
-            android:hint="" />
+            android:hint="@string/_0_10" />
 
 
     <LinearLayout style="@style/LinearLayoutMMH">
 
         <Button
-                style="@style/ButtonCancelDialog"
-                android:text="Cancel"
+                style="@style/Button"
+                android:text="@string/cancel"
+                android:layout_weight="0.3"
+                android:textColor="@color/tea_green"
+                android:backgroundTint="@color/oxford_blue"
                 android:id="@+id/ButtonCancelDialog" />
 
         <Button
-                style="@style/ButtonSubmitDialog"
-                android:text="Submit"
+                style="@style/Button"
+                android:layout_weight="0.6"
+                android:backgroundTint="@color/tea_green"
+                android:textColor="@color/oxford_blue"
+                android:text="@string/edit"
                 android:id="@+id/ButtonSubmitDialog" />
 
     </LinearLayout>
