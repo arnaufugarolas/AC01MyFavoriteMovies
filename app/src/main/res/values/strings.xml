@@ -20,4 +20,11 @@
     <string name="_0_10">0-10</string>
     <string name="cancel">Cancel</string>
     <string name="edit">Edit</string>
+    <string name="order">Order</string>
+    <string name="title_asc">Title ASC</string>
+    <string name="title_desc">Title DESC</string>
+    <string name="rating_asc">Rating ASC</string>
+    <string name="rating_desc">Rating DESC</string>
+    <string name="sort">Sort</string>
+    <string name="submit">Submit</string>
 </resources>

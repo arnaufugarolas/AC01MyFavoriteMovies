@@ -7,4 +7,26 @@
             android:icon="@drawable/outline_add_circle_outline_24"
             android:title="@string/add"
             app:showAsAction="always" />
+
+    <item
+            android:id="@+id/MISort"
+            android:title="@string/sort"
+            app:showAsAction="ifRoom">
+        <menu>
+            <group>
+                <item
+                        android:id="@+id/MISortTitleAsc"
+                        android:title="@string/title_asc" />
+                <item
+                        android:id="@+id/MISortTitleDesc"
+                        android:title="@string/title_desc" />
+                <item
+                        android:id="@+id/MISortRatingAsc"
+                        android:title="@string/rating_asc" />
+                <item
+                        android:id="@+id/MISortRatingDesc"
+                        android:title="@string/rating_desc" />
+            </group>
+        </menu>
+    </item>
 </menu>

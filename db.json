@@ -25,28 +25,6 @@
     },
     {
       "adult": false,
-      "backdrop_path": "https://image.tmdb.org/t/p/original/ovM06PdF3M8wvKb06i4sjW3xoww.jpg",
-      "favorite": true,
-      "genre_ids": [
-        878,
-        12,
-        28
-      ],
-      "id": 76600,
-      "my_score": 6,
-      "original_language": "en",
-      "original_title": "Avatar: The Way of Water",
-      "overview": "Ambientada más de una década después de los acontecimientos de la primera película, 'Avatar: The Way of Water' empieza contando la historia de la familia Sully (Jake, Neytiri y sus hijos), los problemas que los persiguen, lo que tienen que hacer para mantenerse a salvo, las batallas que libran para seguir con vida y las tragedias que sufren.",
-      "popularity": 1274.055,
-      "poster_path": "https://image.tmdb.org/t/p/original/kUAG4ZQcsNbRyiPyAr3hLdsVgAq.jpg",
-      "release_date": "2022-12-14",
-      "title": "Avatar: El sentido del agua",
-      "video": false,
-      "vote_average": 7.73,
-      "vote_count": 5713
-    },
-    {
-      "adult": false,
       "backdrop_path": "https://image.tmdb.org/t/p/original/5pMy5LF2JAleBNBtuzizfCMWM7k.jpg",
       "favorite": true,
       "genre_ids": [
@@ -111,6 +89,28 @@
       "video": false,
       "vote_average": 8.405,
       "vote_count": 4492
+    },
+    {
+      "adult": false,
+      "backdrop_path": "https://image.tmdb.org/t/p/original/ovM06PdF3M8wvKb06i4sjW3xoww.jpg",
+      "favorite": true,
+      "genre_ids": [
+        878,
+        12,
+        28
+      ],
+      "id": 76600,
+      "my_score": 8,
+      "original_language": "en",
+      "original_title": "Avatar: The Way of Water",
+      "overview": "Ambientada más de una década después de los acontecimientos de la primera película, 'Avatar: The Way of Water' empieza contando la historia de la familia Sully (Jake, Neytiri y sus hijos), los problemas que los persiguen, lo que tienen que hacer para mantenerse a salvo, las batallas que libran para seguir con vida y las tragedias que sufren.",
+      "popularity": 1274.055,
+      "poster_path": "https://image.tmdb.org/t/p/original/kUAG4ZQcsNbRyiPyAr3hLdsVgAq.jpg",
+      "release_date": "2022-12-14",
+      "title": "Avatar: El sentido del agua",
+      "video": false,
+      "vote_average": 7.731,
+      "vote_count": 5712
     }
   ],
   "conf": [

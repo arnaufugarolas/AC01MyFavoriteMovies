@@ -2,6 +2,7 @@ package com.arnaufugarolas.ac01myfavoritemovies
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import androidx.activity.viewModels
@@ -46,6 +47,16 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
         init()
     }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        sortType = SortType.valueOf(savedInstanceState.getString("sortType")!!)
+        super.onRestoreInstanceState(savedInstanceState)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("sortType", sortType.name)
+        super.onSaveInstanceState(outState)
+    }
+
     override fun onStart() {
         super.onStart()
         viewModel.loadMovies()
@@ -65,6 +76,30 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
             true
         }
 
+        menu.findItem(R.id.MISortTitleAsc).setOnMenuItemClickListener {
+            sortType = SortType.TITLE_ASC
+            checkMovies(sortMovies(adapter.movies))
+
+            true
+        }
+
+        menu.findItem(R.id.MISortTitleDesc).setOnMenuItemClickListener {
+            sortType = SortType.TITLE_DESC
+            checkMovies(sortMovies(adapter.movies))
+            true
+        }
+
+        menu.findItem(R.id.MISortRatingAsc).setOnMenuItemClickListener {
+            sortType = SortType.RATING_ASC
+            checkMovies(sortMovies(adapter.movies))
+            true
+        }
+
+        menu.findItem(R.id.MISortRatingDesc).setOnMenuItemClickListener {
+            sortType = SortType.RATING_DESC
+            checkMovies(sortMovies(adapter.movies))
+            true
+        }
     }
 
     private fun init() {
@@ -80,7 +115,7 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
 
     private fun setupObservers() {
         viewModel.movies.observeForever { movies ->
-            checkMovies(movies)
+            checkMovies(sortMovies(movies))
         }
 
         viewModel.loadingMovies.observe(this) {
@@ -104,7 +139,7 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
 
     private fun sortMovies(movies: MutableList<Movie>): MutableList<Movie> {
         val favoriteMovies = movies.filter { it.favorite == true }.toMutableList()
-
+        Log.d("SORT", "sortMovies: $favoriteMovies")
         return when (sortType) {
             SortType.TITLE_ASC -> favoriteMovies.sortedBy { it.title }
             SortType.TITLE_DESC -> favoriteMovies.sortedByDescending { it.title }
@@ -114,9 +149,8 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
     }
 
     private fun checkMovies(movies: MutableList<Movie> = viewModel.movies.value!!) {
-        val oldMovies = sortMovies(adapter.movies)
-        val newMovies = sortMovies(movies)
-        val differences = getMutableListDifferences(oldMovies, newMovies)
+        val oldMovies = adapter.movies
+        val differences = getMutableListDifferences(oldMovies, movies)
 
         for (difference in differences) {
             when (difference.type) {
@@ -132,9 +166,16 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
                     adapter.movies.removeAt(index)
                     binding.RVMainMovies.adapter?.notifyItemRemoved(index)
                 }
+
+                DifferenceType.MOVED -> {
+                    val oldIndex = adapter.movies.indexOf(difference.newItem)
+                    adapter.movies.removeAt(oldIndex)
+                    adapter.movies.add(difference.newIndex!!, difference.newItem!!)
+                    binding.RVMainMovies.adapter?.notifyItemMoved(oldIndex, difference.newIndex!!)
+                }
             }
         }
-        if (newMovies.isEmpty() && !viewModel.loadingMovies.value!!) {
+        if (movies.isEmpty() && !viewModel.loadingMovies.value!!) {
             binding.IVMainError.visibility = View.VISIBLE
         } else {
             binding.IVMainError.visibility = View.GONE
@@ -183,6 +224,16 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
             if (!oldList.contains(newItem)) {
                 val index = newList.indexOf(newItem)
                 differences.add(Difference(DifferenceType.ADDED, null, newItem, index))
+            }
+        }
+
+        for (newItem in newList) {
+            if (oldList.contains(newItem)) {
+                val oldIndex = oldList.indexOf(newItem)
+                val newIndex = newList.indexOf(newItem)
+                if (oldIndex != newIndex) {
+                    differences.add(Difference(DifferenceType.MOVED, null, newItem, newIndex))
+                }
             }
         }
 

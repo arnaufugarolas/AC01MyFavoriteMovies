@@ -33,7 +33,7 @@
                 android:layout_weight="0.6"
                 android:backgroundTint="@color/tea_green"
                 android:textColor="@color/oxford_blue"
-                android:text="@string/edit"
+                android:text="@string/submit"
                 android:id="@+id/ButtonSubmitDialog" />
 
     </LinearLayout>
