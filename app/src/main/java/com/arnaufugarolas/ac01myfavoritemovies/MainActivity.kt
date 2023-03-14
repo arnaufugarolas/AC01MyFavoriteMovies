@@ -100,6 +100,11 @@ class MainActivity : AppCompatActivity(), EditRatingListener {
             checkMovies(sortMovies(adapter.movies))
             true
         }
+
+        menu.findItem(R.id.MIWeather).setOnMenuItemClickListener {
+            startActivity(Intent(applicationContext, Weather::class.java))
+            true
+        }
     }
 
     private fun init() {

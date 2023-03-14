@@ -6,9 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.arnaufugarolas.ac01myfavoritemovies.Secrets.TMDB_API_KEY
+import com.arnaufugarolas.ac01myfavoritemovies.Secrets.WEATHER_API_KEY
+import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Config
 import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
+import com.arnaufugarolas.ac01myfavoritemovies.dataClass.WeatherResponse
 import com.arnaufugarolas.ac01myfavoritemovies.server.RetrofitConnectionJSONServer
 import com.arnaufugarolas.ac01myfavoritemovies.server.RetrofitConnectionTMDB
+import com.arnaufugarolas.ac01myfavoritemovies.server.RetrofitConnectionWeather
 import kotlinx.coroutines.launch
 import java.util.Locale
 
@@ -33,6 +37,83 @@ class MainViewModel : ViewModel() {
     val addingMovie: LiveData<Boolean> get() = _addingMovie
     private val _addedMovie = MutableLiveData(false)
     val addedMovie: LiveData<Boolean> get() = _addedMovie
+    private val _weather = MutableLiveData<WeatherResponse?>(null)
+    val weather: LiveData<WeatherResponse?> get() = _weather
+    private val _weatherError = MutableLiveData<String?>(null)
+    val weatherError: LiveData<String?> get() = _weatherError
+    private val _weatherLoading = MutableLiveData(false)
+    val weatherLoading: LiveData<Boolean> get() = _weatherLoading
+    private val _config = MutableLiveData<Config?>(null)
+    val config: LiveData<Config?> get() = _config
+    private val _configError = MutableLiveData<String?>(null)
+    val configError: LiveData<String?> get() = _configError
+    private val _configLoading = MutableLiveData(false)
+    val configLoading: LiveData<Boolean> get() = _configLoading
+
+    fun getWeather(query: String) {
+        viewModelScope.launch {
+            _weatherLoading.value = true
+            _weatherError.value = null
+            _weather.value = null
+
+            try {
+                val response = RetrofitConnectionWeather.service.getCurrentWeather(
+                    WEATHER_API_KEY, query, "yes", Locale.getDefault().language
+                )
+                if (response.isSuccessful) {
+                    _weather.value = response.body()
+                } else {
+                    _weatherError.value = response.errorBody().toString()
+                }
+            } catch (e: Exception) {
+                _weatherError.value = e.message
+            } finally {
+                _weatherLoading.value = false
+            }
+        }
+    }
+
+    fun getConfig() {
+        viewModelScope.launch {
+            _configLoading.value = true
+            _configError.value = null
+            _config.value = null
+
+            try {
+                val response = RetrofitConnectionJSONServer.service.getCity()
+                if (response.isSuccessful) {
+                    _config.value = response.body()!!
+                } else {
+                    _configError.value = response.errorBody().toString()
+                }
+            } catch (e: Exception) {
+                _configError.value = e.message
+            } finally {
+                _configLoading.value = false
+            }
+        }
+    }
+
+    fun updateCity(city: String) {
+        viewModelScope.launch {
+            _configLoading.value = true
+            _configError.value = null
+            _config.value = null
+
+            try {
+                val response = RetrofitConnectionJSONServer.service.updateCity(Config("city", city))
+                if (response.isSuccessful) {
+                    _config.value = response.body()!!
+                } else {
+                    _configError.value = response.errorBody().toString()
+                }
+            } catch (e: Exception) {
+                _configError.value = e.message
+            } finally {
+                _configLoading.value = false
+            }
+        }
+    }
 
     fun searchMovies(query: String) {
         viewModelScope.launch {

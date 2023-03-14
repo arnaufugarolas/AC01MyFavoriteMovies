@@ -19,14 +19,8 @@ A
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-t
-Dapp/src/main/java/com/arnaufugarolas/ac01myfavoritemovies/Secrets.kt,1\d\1dcc3dd94912cd377bc5a99ef88b080afbf01e01
 |
 Lapp/src/main/java/com/arnaufugarolas/ac01myfavoritemovies/dataClass/Movie.kt,d\8\d87ea95d4fcb7d075f8f52dff7d2659154fe77e5
-è
-_app/src/main/java/com/arnaufugarolas/ac01myfavoritemovies/server/RetrofitEndPointsJSONServer.kt,a\2\a23e5f2d32976afeaff922257b4dacfdce5254b1
 ä
 Zapp/src/main/java/com/arnaufugarolas/ac01myfavoritemovies/server/RetrofitConnectionTMDB.kt,1\b\1ba837a9fddfcce55e68e78f7c73e06189891dae
 ê

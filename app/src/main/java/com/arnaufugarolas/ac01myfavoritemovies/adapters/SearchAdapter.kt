@@ -24,8 +24,7 @@ import java.util.Locale
 
 class SearchAdapter(
     var movies: MutableList<Movie>,
-    private val fragmentManager: FragmentManager,
-    private val onMovieAdd: (Movie) -> Unit,
+    private val fragmentManager: FragmentManager
 ) :
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -59,6 +58,10 @@ class SearchAdapter(
             Snackbar.make(it, "Movie poster", Snackbar.LENGTH_SHORT).show()
             true
         }
+        holder.binding.IVSearchItemAdd.setOnLongClickListener {
+            Snackbar.make(it, "Add movie to favorites", Snackbar.LENGTH_SHORT).show()
+            true
+        }
     }
 
     private fun bind(movie: Movie, holder: ViewHolder) {
@@ -83,8 +86,27 @@ class SearchAdapter(
                 holder.binding.IVSearchItemErrorImage,
                 "https://image.tmdb.org/t/p/original${movie.posterPath.toString()}"
             )
+        } else if (movie.backdropPath != null) {
+            setImageToImageView(
+                holder.binding.IVSearchItemMoviePoster,
+                holder.binding.PBSearchItemMoviePoster,
+                holder.binding.IVSearchItemErrorImage,
+                "https://image.tmdb.org/t/p/original${movie.backdropPath.toString()}"
+            )
         } else { // If there is no poster, show the error image
             holder.binding.IVSearchItemErrorImage.visibility = View.VISIBLE
+            holder.binding.IVSearchItemMoviePoster.visibility = View.GONE
+            holder.binding.IVSearchItemErrorImage.setOnLongClickListener {
+                Snackbar.make(
+                    it,
+                    "This movie doesn't have a poster or a backdrop",
+                    Snackbar.LENGTH_SHORT
+                )
+                    .setBackgroundTint(getColor(it.context, R.color.cornell_red))
+                    .setTextColor(getColor(it.context, R.color.white))
+                    .show()
+                true
+            }
         }
 
         setLongClickListeners(holder) // Set the long click listeners

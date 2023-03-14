@@ -9,6 +9,12 @@
             app:showAsAction="always" />
 
     <item
+            android:id="@+id/MIWeather"
+            android:icon="@drawable/baseline_wb_twilight_24"
+            android:title="@string/weather"
+            app:showAsAction="always" />
+
+    <item
             android:id="@+id/MISort"
             android:title="@string/sort"
             app:showAsAction="ifRoom">

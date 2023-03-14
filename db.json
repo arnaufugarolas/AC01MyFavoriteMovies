@@ -115,7 +115,8 @@
   ],
   "conf": [
     {
-      "city": "Mataró"
+      "city": "Kabul",
+      "id": "city"
     }
   ]
 }

@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/MovieDetailsMain"
+        tools:context=".Weather">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GWeatherColumn01"
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.05" /> <!-- Column 05% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GWeatherColumn02"
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.20" /> <!-- Column 20% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GWeatherColumn4"
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.75" /> <!-- Column 20% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GWeatherColumn05"
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.80" /> <!-- Column 80% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GWeatherColumn06"
+            style="@style/Column"
+            app:layout_constraintGuide_percent="0.95" /> <!-- Column 95% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GWeatherRow01"
+            style="@style/Row"
+            app:layout_constraintGuide_percent="0.15" /> <!-- Row 10% -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/GWeatherRow02"
+            style="@style/Row"
+            app:layout_constraintGuide_percent="0.50" /> <!-- Row 50% -->
+
+    <EditText
+            android:id="@+id/ETWeatherQuery"
+            style="@style/EditTextQuery"
+            android:hint="@string/Location"
+            app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn4"
+            app:layout_constraintStart_toEndOf="@+id/GWeatherColumn01"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+            android:id="@+id/IVWeatherSearch"
+            style="@style/SearchMoviesImage"
+            app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn06"
+            app:layout_constraintBottom_toBottomOf="@+id/ETWeatherQuery"
+            app:layout_constraintStart_toEndOf="@+id/GWeatherColumn4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+            style="@style/Loading"
+            android:id="@+id/PBWeatherLoading"
+            app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn05"
+            app:layout_constraintStart_toStartOf="@+id/GWeatherColumn02"
+            app:layout_constraintBottom_toTopOf="@+id/GWeatherRow02"
+            app:layout_constraintTop_toBottomOf="@+id/GWeatherRow01" /> <!-- Loading -->
+
+    <ScrollView
+            android:id="@+id/SVWeather"
+            style="@style/Layout00"
+            app:layout_constraintStart_toEndOf="@+id/GWeatherColumn01"
+            app:layout_constraintEnd_toEndOf="@+id/GWeatherColumn06"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/GWeatherRow01"> <!-- Weather Scroll View -->
+
+        <androidx.constraintlayout.widget.ConstraintLayout style="@style/LayoutMW">
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/GWeatherColumn03"
+                    style="@style/Column"
+                    app:layout_constraintGuide_percent="0.40" /> <!-- Column 40% -->
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/GWeatherColumn04"
+                    style="@style/Column"
+                    app:layout_constraintGuide_percent="0.80" /> <!-- Column 40% -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLocationNameLabel"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Location name:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Location Name Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLocationNameData"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Mataró" /> <!-- Location Name Data -->
+
+            <!-- location region -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelRegion"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Region:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLocationNameLabel"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Region Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataRegion"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLocationNameData"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Catalonia" /> <!-- Region Data -->
+
+            <!-- location country -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelCountry"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Country:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelRegion"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Country Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataCountry"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataRegion"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Espanha" /> <!-- Country Data -->
+
+            <!-- location lat -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelLat"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Latitude:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelCountry"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Latitude Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataLat"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataCountry"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="41.53" /> <!-- Latitude Data -->
+
+            <!-- location lon -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelLon"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Longitude:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelLat"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Longitude Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataLon"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataLat"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="2.45" /> <!-- Longitude Data -->
+
+            <!-- location tz_id -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelTzId"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Time Zone:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelLon"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Time Zone Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataTzId"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataLon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Europe/Madrid" /> <!-- Time Zone Data -->
+
+            <!-- location localtime_epoch -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelLocaltimeEpoch"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Local Time Epoch:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelTzId"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Local Time Epoch Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataLocaltimeEpoch"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataTzId"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="1587456400" /> <!-- Local Time Epoch Data -->
+
+            <!-- location localtime -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelLocaltime"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Local Time:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelLocaltimeEpoch"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Local Time Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataLocaltime"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataLocaltimeEpoch"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="2020-04-20 17:00" /> <!-- Local Time Data -->
+
+            <!-- location last_updated_epoch -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelLastUpdatedEpoch"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Last Updated Epoch:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelLocaltime"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Last Updated Epoch Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataLastUpdatedEpoch"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataLocaltime"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="1587456400" /> <!-- Last Updated Epoch Data -->
+
+            <!-- location last_updated -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelLastUpdated"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Last Updated:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelLastUpdatedEpoch"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Last Updated Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataLastUpdated"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataLastUpdatedEpoch"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="2020-04-20 17:00" /> <!-- Last Updated Data -->
+
+            <!-- current temp_c -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelTempC"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Temperature (C):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelLastUpdated"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Temperature (C) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataTempC"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataLastUpdated"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="17" /> <!-- Temperature (C) Data -->
+
+            <!-- current temp_f -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelTempF"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Temperature (F):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelTempC"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Temperature (F) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataTempF"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataTempC"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="62" /> <!-- Temperature (F) Data -->
+
+            <!-- current is_day -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelIsDay"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Is Day:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelTempF"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Is Day Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataIsDay"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataTempF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="1" /> <!-- Is Day Data -->
+
+            <!-- current condition -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelCondition"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Condition:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelIsDay"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Condition Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataCondition"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataIsDay"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Partly cloudy" /> <!-- Condition Data -->
+
+            <!-- current wind_mph -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelWindMph"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Wind (mph):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelCondition"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Wind (mph) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataWindMph"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataCondition"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="10" /> <!-- Wind (mph) Data -->
+
+            <!-- current wind_kph -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelWindKph"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Wind (kph):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelWindMph"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Wind (kph) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataWindKph"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataWindMph"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="16" /> <!-- Wind (kph) Data -->
+
+            <!-- current wind_degree -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelWindDegree"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Wind Degree:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelWindKph"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Wind Degree Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataWindDegree"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataWindKph"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="180" /> <!-- Wind Degree Data -->
+
+            <!-- current wind_dir -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelWindDir"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Wind Direction:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelWindDegree"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Wind Direction Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataWindDir"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataWindDegree"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="S" /> <!-- Wind Direction Data -->
+
+            <!-- current pressure_mb -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelPressureMb"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Pressure (mb):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelWindDir"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Pressure (mb) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataPressureMb"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataWindDir"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="1019" /> <!-- Pressure (mb) Data -->
+
+            <!-- current pressure_in -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelPressureIn"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Pressure (in):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelPressureMb"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Pressure (in) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataPressureIn"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataPressureMb"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="30.5" /> <!-- Pressure (in) Data -->
+
+            <!-- current precip_mm -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelPrecipMm"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Precip (mm):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelPressureIn"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Precip (mm) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataPrecipMm"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataPressureIn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0.0" /> <!-- Precip (mm) Data -->
+
+            <!-- current precip_in -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelPrecipIn"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Precip (in):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelPrecipMm"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Precip (in) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataPrecipIn"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataPrecipMm"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0.0" /> <!-- Precip (in) Data -->
+
+            <!-- current humidity -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelHumidity"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Humidity:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelPrecipIn"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Humidity Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataHumidity"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataPrecipIn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="48" /> <!-- Humidity Data -->
+
+            <!-- current cloud -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelCloud"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Cloud:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelHumidity"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Cloud Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataCloud"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataHumidity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Cloud Data -->
+
+            <!-- current feelslike_c -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelFeelsLikeC"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Feels Like (C):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelCloud"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Feels Like (C) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataFeelsLikeC"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataCloud"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="11" /> <!-- Feels Like (C) Data -->
+
+            <!-- current feelslike_f -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelFeelsLikeF"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Feels Like (F):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelFeelsLikeC"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Feels Like (F) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataFeelsLikeF"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataFeelsLikeC"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="51" /> <!-- Feels Like (F) Data -->
+
+            <!-- current vis_km -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelVisKm"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Vis (km):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelFeelsLikeF"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Vis (km) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataVisKm"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataFeelsLikeF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="10" /> <!-- Vis (km) Data -->
+
+            <!-- current vis_miles -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelVisMiles"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Vis (miles):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelVisKm"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Vis (miles) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataVisMiles"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataVisKm"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="6" /> <!-- Vis (miles) Data -->
+
+            <!-- current uv -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelUV"
+                    style="@style/MovieDetailsLabel"
+                    android:text="UV:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelVisMiles"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- UV Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataUV"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataVisMiles"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- UV Data -->
+
+            <!-- current gust_mph -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelGustMph"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Gust (mph):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelUV"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Gust (mph) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataGustMph"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataUV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Gust (mph) Data -->
+
+            <!-- current gust_kph -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelGustKph"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Gust (kph):"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelGustMph"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Gust (kph) Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataGustKph"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataGustMph"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Gust (kph) Data -->
+
+            <!-- air_quality co -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelAirQualityCo"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Air Quality CO:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelGustKph"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Air Quality CO Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataAirQualityCo"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataGustKph"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Air Quality CO Data -->
+
+            <!-- air_quality no2 -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelAirQualityNo2"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Air Quality NO2:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelAirQualityCo"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Air Quality NO2 Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataAirQualityNo2"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataAirQualityCo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Air Quality NO2 Data -->
+
+            <!-- air_quality o3 -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelAirQualityO3"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Air Quality O3:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelAirQualityNo2"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Air Quality O3 Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataAirQualityO3"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataAirQualityNo2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Air Quality O3 Data -->
+
+            <!-- air_quality so2 -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelAirQualitySo2"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Air Quality SO2:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelAirQualityO3"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Air Quality SO2 Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataAirQualitySo2"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataAirQualityO3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Air Quality SO2 Data -->
+
+            <!-- air_quality pm2_5 -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelAirQualityPm2_5"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Air Quality PM2.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelAirQualitySo2"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Air Quality PM2.5 Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataAirQualityPm2_5"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataAirQualitySo2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Air Quality PM2.5 Data -->
+
+            <!-- air_quality pm10 -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelAirQualityPm10"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Air Quality PM10:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelAirQualityPm2_5"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Air Quality PM10 Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataAirQualityPm10"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataAirQualityPm2_5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Air Quality PM10 Data -->
+
+            <!-- air_quality us-epa-index -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelAirQualityUsEpaIndex"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Air Quality US EPA Index:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelAirQualityPm10"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Air Quality US EPA Index Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataAirQualityUsEpaIndex"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataAirQualityPm10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Air Quality US EPA Index Data -->
+
+            <!-- air_quality gb-defra-index -->
+
+            <TextView
+                    android:id="@+id/TVWeatherLabelAirQualityGbDefraIndex"
+                    style="@style/MovieDetailsLabel"
+                    android:text="Air Quality GB DEFRA Index:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherLabelAirQualityUsEpaIndex"
+                    app:layout_constraintEnd_toStartOf="@+id/GWeatherColumn03" /> <!-- Air Quality GB DEFRA Index Label -->
+
+            <TextView
+                    android:id="@+id/TVWeatherDataAirQualityGbDefraIndex"
+                    style="@style/MovieDetailsValue"
+                    app:layout_constraintStart_toEndOf="@+id/GWeatherColumn03"
+                    app:layout_constraintTop_toBottomOf="@+id/TVWeatherDataAirQualityUsEpaIndex"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="0" /> <!-- Air Quality GB DEFRA Index Data -->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

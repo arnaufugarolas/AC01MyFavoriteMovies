@@ -1,5 +1,6 @@
 package com.arnaufugarolas.ac01myfavoritemovies.server
 
+import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Config
 import com.arnaufugarolas.ac01myfavoritemovies.dataClass.Movie
 import retrofit2.Response
 import retrofit2.http.*
@@ -19,4 +20,10 @@ interface RetrofitEndPointsJSONServer {
 
     @DELETE("movies/{id}")
     suspend fun deleteMovie(@Path("id") id: Int)
+
+    @GET("conf/city")
+    suspend fun getCity(): Response<Config>
+
+    @PUT("conf/city")
+    suspend fun updateCity(@Body config: Config): Response<Config>
 }

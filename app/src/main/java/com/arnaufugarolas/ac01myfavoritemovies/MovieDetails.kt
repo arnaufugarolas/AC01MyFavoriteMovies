@@ -26,6 +26,7 @@ class MovieDetails : AppCompatActivity(), EditRatingListener {
     private fun init() {
         getMovieDetails()
         setupObservers()
+        supportActionBar?.title = "Movie details"
     }
 
     private fun getMovieDetails() {

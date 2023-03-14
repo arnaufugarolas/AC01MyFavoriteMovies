@@ -17,6 +17,9 @@
             android:theme="@style/Theme.AC01MyFavoriteMovies"
             tools:targetApi="33">
         <activity
+                android:name=".Weather"
+                android:exported="false" />
+        <activity
                 android:name=".SearchMovies"
                 android:exported="false" />
         <activity

@@ -19,9 +19,7 @@ interface AddMovieListener {
 class SearchMovies : AppCompatActivity(), AddMovieListener {
     private lateinit var binding: ActivitySearchMoviesBinding
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory() }
-    private val adapter = SearchAdapter(mutableListOf(), supportFragmentManager) {
-        viewModel.addMovie(it)
-    }
+    private val adapter = SearchAdapter(mutableListOf(), supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +33,7 @@ class SearchMovies : AppCompatActivity(), AddMovieListener {
         setupRecyclerView()
         setupOnClickListeners()
         setupObservers()
+        supportActionBar?.title = "Search"
     }
 
     private fun setupRecyclerView() {
